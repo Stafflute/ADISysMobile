@@ -6,6 +6,7 @@
 # Package Files #
 *.war
 *.ear
+*.apk
 
 .idea/workspace.xml
 workspace.xml
