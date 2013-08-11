@@ -2,6 +2,8 @@
 .DS_STORE
 .idea
 .idea/*
+out
+out/*
 
 # Package Files #
 *.war
