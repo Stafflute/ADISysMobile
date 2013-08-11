@@ -32,7 +32,7 @@ class ADISysApplicationController implements ApplicationController {
 
     private static void dispatchGUI(String serviceName) {
         Boundary boundary = BoundaryFactory.buildInstance(serviceName);
-        boundary.showWindow();
+        //boundary.showWindow();
     }
 
 
