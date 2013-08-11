@@ -6,3 +6,7 @@
 # Package Files #
 *.war
 *.ear
+
+.idea/workspace.xml
+workspace.xml
+.idea/workspace.xml
