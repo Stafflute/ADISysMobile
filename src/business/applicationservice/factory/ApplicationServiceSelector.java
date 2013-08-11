@@ -8,7 +8,8 @@ class ApplicationServiceSelector {
 	private static ApplicationServiceMap asMap = new ApplicationServiceHashMap();
 
 	static {
-		//TO be implemented
+		//TODO be implemented
+        //TODO operation to implement create dirs and load list files
 	}
 
 	private ApplicationServiceSelector() {

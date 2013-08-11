@@ -12,6 +12,9 @@ import java.util.List;
 
 public class SchermataPrincipale extends Activity implements Boundary {
 
+    private final static String ESPORTAZIONE_FOLDER = "Esportazione";
+    private final static String IMPORTAZIONE_FOLDER = "Importazione";
+
     private List<String> fileList = new LinkedList<>();
 
     @Override
