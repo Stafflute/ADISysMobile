@@ -2,8 +2,8 @@ package util;
 
 public class Couple<X, Y> {
 
-    private final X firstValue;
-    private final Y secondValue;
+    protected X firstValue;
+    protected Y secondValue;
     
     public Couple(X firstValue, Y secondValue) {
 	this.firstValue = firstValue;

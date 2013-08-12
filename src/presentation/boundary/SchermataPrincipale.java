@@ -1,37 +1,38 @@
 package presentation.boundary;
 
+import com.adisys.R;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
-import com.example.ADISysMobile.R;
+import presentation.controller.FrontController;
+import presentation.controller.FrontControllerFactory;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class SchermataPrincipale extends Activity implements Boundary {
 
-    private final static String ESPORTAZIONE_FOLDER = "Esportazione";
-    private final static String IMPORTAZIONE_FOLDER = "Importazione";
-
-    private List<String> fileList = new LinkedList<>();
+    private List<String> fileList = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+        FrontController fc = FrontControllerFactory.buildInstance();
+
         Spinner fileSpinner = (Spinner)findViewById(R.id.spinner);
 
-        fileList.add("aaa");
-        fileList.add("bbb");
-        fileList.add("ccc");
+        fileList = (List<String>) fc.processRequest("ElencaPianificazioni", null);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, fileList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         fileSpinner.setAdapter(adapter);
-
     }
 
 }

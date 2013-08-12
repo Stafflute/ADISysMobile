@@ -1,5 +1,6 @@
 package business.applicationservice.factory;
 
+import android.util.Log;
 import presentation.controller.ApplicationService;
 import util.Parameter;
 
@@ -25,15 +26,15 @@ class ADISysApplicationServiceMethod implements ApplicationServiceMethod {
 			result = asMethod.invoke(as, parameter);
 			
 		} catch (IllegalAccessException e) {
-			e.printStackTrace();
+            Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
 		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
+            Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
 		} catch (InvocationTargetException e) {
-			e.printStackTrace();
+            Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
 		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
+            Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
 		} catch (SecurityException e) {
-			e.printStackTrace();
+            Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
 		}
 		return result;
 	}

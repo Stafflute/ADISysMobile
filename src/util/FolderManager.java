@@ -1,5 +1,7 @@
 package util;
 
+import android.util.Log;
+
 import java.io.File;
 
 public class FolderManager {
@@ -13,7 +15,9 @@ public class FolderManager {
 		
 		if (!foldFile.exists()) {
 			
-			foldFile.mkdir();
+			if(!foldFile.mkdirs()) {
+                Log.d("AndroidRuntime", "Error creating " + foldFile.getAbsolutePath());
+            }
 			
 		} else if (foldFile.isFile()) {
 			throw new InvalidPathExeption("File instead a folder");

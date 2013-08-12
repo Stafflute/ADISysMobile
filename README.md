@@ -1,6 +1,6 @@
-ADISysMobile
+com.adisys
 ============
 
-ADISysMobile
+com.adisys
 
 La versione mobile di ADISys

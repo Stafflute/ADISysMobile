@@ -1,5 +1,7 @@
 package business.applicationservice.factory;
 
+import org.simpleframework.xml.Root;
+
 public interface ApplicationServiceMap {
 	
 	/*

@@ -10,7 +10,7 @@ import util.xml.adapter.XMLDateAdapter;
 import util.xml.adapter.XMLTimeAdapter;
 
 @Root
-@Order(elements = {"id", "citta", "cap", "indirizzo", "data", "ora", "operazione"})
+@Order(elements = {"id", "citta", "cap", "indirizzo", "data", "ora", "listaOperazioni", "paziente", "infermiere"})
 public class Intervento implements Entity {
 	/**
 	 * 

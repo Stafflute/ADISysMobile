@@ -8,7 +8,7 @@ import org.simpleframework.xml.*;
 import util.xml.adapter.XMLDateAdapter;
 
 @Root
-@Order(elements = {"id", "nome", "cognome", "data", "numeroCellulare"})
+@Order(elements = {"id", "nome", "cognome", "data", "rubrica"})
 public class Paziente implements Entity {
 	/**
 	 * 

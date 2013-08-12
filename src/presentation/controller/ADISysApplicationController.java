@@ -14,6 +14,10 @@ class ADISysApplicationController implements ApplicationController {
 
 	public Object handleRequest(String serviceName, Parameter parameter) {
 		Object result = null;
+
+        if(parameter == null) {
+            parameter = new Parameter();
+        }
 		
 		if (serviceName.matches(SHOW_SYNTAX)) {
             dispatchGUI(serviceName);

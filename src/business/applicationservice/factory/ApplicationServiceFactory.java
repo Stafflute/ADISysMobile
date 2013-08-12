@@ -1,11 +1,12 @@
 package business.applicationservice.factory;
 
+import android.util.Log;
 import presentation.controller.ApplicationService;
 
 public class ApplicationServiceFactory {
 
     private ApplicationServiceFactory() {
-	
+
     }
     
     public static ApplicationService buildInstance(String serviceName) {
@@ -16,11 +17,11 @@ public class ApplicationServiceFactory {
 	    Class<?> asClass = Class.forName(canonicalClassName);
 	    as = (ApplicationService) asClass.newInstance();
 	} catch (ClassNotFoundException e) {
-	    e.printStackTrace();
+	    Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
 	} catch (InstantiationException e) {
-	    e.printStackTrace();
+        Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
 	} catch (IllegalAccessException e) {
-	    e.printStackTrace();
+        Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
 	}
 	
 	return as;
