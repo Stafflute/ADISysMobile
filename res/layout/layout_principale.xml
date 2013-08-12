@@ -18,9 +18,10 @@
                 android:layout_height="20px"
                 android:id="@+id/space1"/>
         <Spinner
-                android:layout_width="203dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/spinner" android:layout_gravity="left|center_vertical"/>
+                android:id="@+id/spinner" android:layout_gravity="left|center_vertical"
+                />
     </LinearLayout>
     <Space
             android:layout_width="20px"
