@@ -2,9 +2,12 @@ package business.entity;
 
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
+import org.simpleframework.xml.convert.Convert;
 import util.SerialClone;
 import java.util.List;
 import org.simpleframework.xml.*;
+import util.xml.adapter.XMLDateAdapter;
+import util.xml.adapter.XMLTimeAdapter;
 
 @Root
 @Order(elements = {"id", "citta", "cap", "indirizzo", "data", "ora", "operazione"})
@@ -12,6 +15,7 @@ public class Intervento implements Entity {
 	/**
 	 * 
 	 */
+    @Transient
 	private static final long serialVersionUID = 3822067935716362954L;
     @Element
 	private String id;
@@ -26,12 +30,13 @@ public class Intervento implements Entity {
     @Element
 	private String indirizzo;
     @Element
+    @Convert(XMLDateAdapter.class)
 	private LocalDate data;
     @Element
+    @Convert(XMLTimeAdapter.class)
 	private LocalTime ora;
 
-    @Path("listaOperazioni")
-    @Element
+    @ElementList(name = "listaOperazioni")
 	private List<Operazione> operazione;
 
 	public java.lang.String getCitta() {

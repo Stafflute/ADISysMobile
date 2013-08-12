@@ -9,6 +9,7 @@ public class Operazione implements Entity {
 	/**
 	 * 
 	 */
+    @Transient
 	private static final long serialVersionUID = 3829368754663286748L;
     @Element
 	private String id;

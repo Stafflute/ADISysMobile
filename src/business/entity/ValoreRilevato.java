@@ -9,6 +9,7 @@ public class ValoreRilevato implements Entity {
 	/**
 	 * 
 	 */
+    @Transient
 	private static final long serialVersionUID = 2796107324385873233L;
 
     @Element

@@ -10,6 +10,7 @@ public class Pianificazione implements Entity {
 	/**
 	 * 
 	 */
+    @Transient
 	private static final long serialVersionUID = 919250330191402749L;
 
     @Element
