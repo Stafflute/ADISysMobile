@@ -4,7 +4,7 @@ import business.applicationservice.factory.ApplicationServiceFactory;
 import business.applicationservice.factory.ApplicationServiceMethod;
 import business.applicationservice.factory.ApplicationServiceMethodFactory;
 import presentation.boundary.Boundary;
-import presentation.boundary.factory.BoundaryFactory;
+import business.applicationservice.ApplicationServiceBoundary;
 import util.Parameter;
 
 class ADISysApplicationController implements ApplicationController {
@@ -16,7 +16,7 @@ class ADISysApplicationController implements ApplicationController {
 		Object result = null;
 		
 		if (serviceName.matches(SHOW_SYNTAX)) {
-            dispatchGUI(serviceName);
+            dispatchGUI(serviceName, parameter);
 		} else {
 			result = execute(serviceName, parameter);
 		}
@@ -30,9 +30,8 @@ class ADISysApplicationController implements ApplicationController {
 		return asMethod.invoke(serviceName, parameter);
 	}
 
-    private static void dispatchGUI(String serviceName) {
-        Boundary boundary = BoundaryFactory.buildInstance(serviceName);
-        //boundary.showWindow();
+    private static void dispatchGUI(String serviceName, Parameter parameter) {
+        ApplicationServiceBoundary.startBoundary(serviceName, parameter);
     }
 
 
