@@ -45,8 +45,6 @@ public class SchermataPrincipale extends Activity implements Boundary {
 
         @Override
         public void onClick(View v) {
-            //TODO implementare
-            Log.d("AndroidRuntime", selectedPianificazione);
             Parameter parameter = new Parameter();
             parameter.setValue("activity", activity);
             parameter.setValue("pianificazione", selectedPianificazione);
@@ -66,8 +64,8 @@ public class SchermataPrincipale extends Activity implements Boundary {
 
         fileList = (List<String>) fc.processRequest("ElencaPianificazioni", null);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, fileList);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.little_text, fileList);
+        adapter.setDropDownViewResource(R.layout.little_text);
         fileSpinner.setAdapter(adapter);
 
         fileSpinner.setOnItemSelectedListener(fileSpinnerListener);

@@ -99,4 +99,8 @@ public class Intervento implements Entity {
 	public void setInfermiere(Infermiere infermiere) {
 		this.infermiere = SerialClone.clone(infermiere);
 	}
+
+    public String toString() {
+        return id + " " + paziente.getNome() + " " + paziente.getCognome();
+    }
 }
