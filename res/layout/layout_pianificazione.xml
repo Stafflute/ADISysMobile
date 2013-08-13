@@ -28,10 +28,10 @@
     <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:id="@+id/scrollView" android:layout_gravity="left|center_vertical">
+            android:id="@+id/scrollView" android:layout_gravity="left|center_vertical" android:fillViewport="true">
         <ListView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/listaInterventi"/>
+                android:id="@+id/listaInterventi" android:clickable="true"/>
     </ScrollView>
 </LinearLayout>

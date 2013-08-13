@@ -1,24 +1,20 @@
 package business.entity;
 
 import util.SerialClone;
-import org.simpleframework.xml.*;
 
-@Root
-@Order(elements = {"id", "nome", "nota", "valoreRilevato"})
 public class Operazione implements Entity {
 	/**
 	 * 
 	 */
-    @Transient
 	private static final long serialVersionUID = 3829368754663286748L;
-    @Element
-	private String id;
-    @Element
-	private String nome;
-    @Element
-	private String nota;
-    @Element
-	private ValoreRilevato valoreRilevato;
+
+    private String id;
+
+    private String nome;
+
+    private String nota;
+
+    private ValoreRilevato valoreRilevato;
 
 	public java.lang.String getNome() {
 		return nome;

@@ -3,11 +3,16 @@ package presentation.boundary;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import business.entity.Intervento;
 import business.entity.Paziente;
+import business.entity.Pianificazione;
 import com.adisys.R;
+import presentation.controller.FrontController;
+import presentation.controller.FrontControllerFactory;
 import util.Parameter;
 
 import java.util.LinkedList;
@@ -17,6 +22,21 @@ public class SchermataPianificazione extends Activity implements Boundary {
 
     private Bundle extras;
     private Parameter parameter;
+    private Pianificazione pianificazione;
+
+    private Activity activity = this;
+
+    private AdapterView.OnItemClickListener interventoClickListener = new AdapterView.OnItemClickListener() {
+
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Parameter parameter = new Parameter();
+            parameter.setValue("activity", activity);
+            parameter.setValue("intervento", pianificazione.getIntervento().get(position));
+            fc.processRequest("MostraSchermataIntervento", parameter);
+        }
+    };
+
+    private FrontController fc = FrontControllerFactory.buildInstance();
 
     private void init() {
         extras = getIntent().getExtras();
@@ -28,20 +48,11 @@ public class SchermataPianificazione extends Activity implements Boundary {
         setContentView(R.layout.layout_pianificazione);
         init();
 
-        //test
-        List<Intervento> listaInterventi = new LinkedList<>();
-        Intervento intrv = new Intervento();
-        intrv.setId("1");
-        Paziente paz = new Paziente();
-        paz.setNome("nome");
-        paz.setCognome("cognome");
-        intrv.setPaziente(paz);
-        listaInterventi.add(intrv);
-        //END test
-        ListView listaInterventiView = (ListView)findViewById(R.id.listaInterventi);
-        ArrayAdapter<Intervento> listaIntAdapter = new ArrayAdapter<Intervento>(this, R.layout.simple_text, listaInterventi);
-        listaInterventiView.setAdapter(listaIntAdapter);
+        pianificazione =  (Pianificazione) fc.processRequest("ElencaInterventi", parameter);
 
-        Log.d("AndroidRuntime",(parameter.getValue("pianificazione")).toString());
+        ListView listaInterventiView = (ListView)findViewById(R.id.listaInterventi);
+        ArrayAdapter<Intervento> listaIntAdapter = new ArrayAdapter<>(this, R.layout.simple_text, pianificazione.getIntervento());
+        listaInterventiView.setAdapter(listaIntAdapter);
+        listaInterventiView.setOnItemClickListener(interventoClickListener);
     }
 }

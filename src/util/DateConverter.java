@@ -1,12 +1,16 @@
 package util;
 
 import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 public class DateConverter {
 
 	private static final char HQSQL_DATE_SEPARATOR = '-';
 	private static final String HQSQL_DATE_SEPARATOR_REGEX = "[" + HQSQL_DATE_SEPARATOR + "]";
 	private static final char COMMON_DATE_SEPARATOR = '/';
+
+    public final static transient DateTimeFormatter EUROPEAN_DATE_FORMAT = DateTimeFormat.forPattern("d' 'MMMM' 'yyyy', ore 'HH':'mm':'ss");
 	
 	private static final int YEAR = 0;
 	private static final int MONTH = 1;

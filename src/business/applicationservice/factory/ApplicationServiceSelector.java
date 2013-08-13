@@ -12,6 +12,9 @@ class ApplicationServiceSelector {
         //TODO operation to implement create dirs and load list files
         asMap.selectApplicationServiceBy("ElencaPianificazioni");
         asMap.setApplicationServiceValues("ApplicationServicePianificazione", "getFileList");
+
+        asMap.selectApplicationServiceBy("ElencaInterventi");
+        asMap.setApplicationServiceValues("ApplicationServicePianificazione", "getPianificazione");
 	}
 
 	private ApplicationServiceSelector() {

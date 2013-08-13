@@ -9,14 +9,20 @@ package business.applicationservice;
  */
 
 import android.util.Log;
+import business.entity.Intervento;
+import business.entity.Pianificazione;
 import presentation.controller.ApplicationService;
 import util.AndroidPath;
 import util.FolderManager;
 import util.Parameter;
+import util.PianificazioneFile;
+import util.xml.parser.PianificazioneParser;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ApplicationServicePianificazione implements ApplicationService {
@@ -41,23 +47,44 @@ public class ApplicationServicePianificazione implements ApplicationService {
     };
 
 
-    public List<String> getFileList(Parameter parameter) {
-        List<String> fileListString = null;
+    public List<PianificazioneFile> getFileList(Parameter parameter) {
+        List<PianificazioneFile> fileListDetailed = null;
 
-
+        try{
         FolderManager.insertFolderIfNotExists(AndroidPath.SD_PATH + ROOT_PATH);
         FolderManager.insertFolderIfNotExists(AndroidPath.SD_PATH + CANONICAL_IMPORTAZIONE_PATH);
 
         File folder = new File(AndroidPath.SD_PATH +CANONICAL_IMPORTAZIONE_PATH);
 
-        fileListString = new ArrayList<>();
+        fileListDetailed = new ArrayList<>();
         File[] fileList = folder.listFiles(filter);
 
         for(File file : fileList) {
             String fileName = file.getName();
-            fileListString.add(fileName);
+            PianificazioneFile decoratedFileName = new PianificazioneFile(fileName);
+
+            fileListDetailed.add(decoratedFileName);
         }
 
-        return fileListString;
+        Collections.sort(fileListDetailed);
+        } catch (Throwable e) {
+            Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
+        }
+
+        return fileListDetailed;
+    }
+
+    public Pianificazione getPianificazione(Parameter parameter) {
+        Pianificazione pianificazione = null;
+
+        PianificazioneFile fileDetailed = (PianificazioneFile) parameter.getValue("pianificazione");
+        File file = fileDetailed.getFile();
+        try {
+            pianificazione = PianificazioneParser.parse(file);
+        } catch (Throwable e) {
+            Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
+        }
+
+        return pianificazione;
     }
 }

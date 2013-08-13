@@ -1,23 +1,15 @@
 package business.entity;
 
-import org.simpleframework.xml.*;
-
-@Root
-@Order(elements = {"id", "nome", "cognome"})
 public class Infermiere implements Entity {
 	/**
 	 * 
 	 */
-    @Transient
 	private static final long serialVersionUID = 8182360441844160117L;
 
-    @Element
 	private String id;
 
-    @Element
 	private String nome;
 
-    @Element
 	private String cognome;
 
 	public java.lang.String getId() {

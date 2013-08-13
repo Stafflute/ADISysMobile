@@ -12,15 +12,16 @@ import android.util.Log;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
 import util.Parameter;
+import util.PianificazioneFile;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SchermataPrincipale extends Activity implements Boundary {
 
-    private List<String> fileList = new ArrayList<>();
+    private List<PianificazioneFile> fileList = new ArrayList<>();
 
-    private String selectedPianificazione = null;
+    private PianificazioneFile selectedPianificazione = null;
 
     private Context context;
 
@@ -32,7 +33,7 @@ public class SchermataPrincipale extends Activity implements Boundary {
     {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            selectedPianificazione = parent.getItemAtPosition(position).toString();
+            selectedPianificazione = fileList.get(position);
         }
 
         @Override
@@ -62,9 +63,9 @@ public class SchermataPrincipale extends Activity implements Boundary {
         Spinner fileSpinner = (Spinner)findViewById(R.id.spinner);
         Button fileConfirm = (Button)findViewById(R.id.fileConfirm);
 
-        fileList = (List<String>) fc.processRequest("ElencaPianificazioni", null);
+        fileList = (List<PianificazioneFile>) fc.processRequest("ElencaPianificazioni", null);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.little_text, fileList);
+        ArrayAdapter<PianificazioneFile> adapter = new ArrayAdapter<>(this, R.layout.little_text, fileList);
         adapter.setDropDownViewResource(R.layout.little_text);
         fileSpinner.setAdapter(adapter);
 

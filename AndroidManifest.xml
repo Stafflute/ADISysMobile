@@ -14,5 +14,6 @@
             </intent-filter>
         </activity>
         <activity android:name="presentation.boundary.SchermataPianificazione" />
+        <activity android:name="presentation.boundary.SchermataIntervento" />
     </application>
 </manifest>
