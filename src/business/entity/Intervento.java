@@ -93,6 +93,6 @@ public class Intervento implements Entity {
 	}
 
     public String toString() {
-        return id + pazienteLabel + paziente.getNome() + " " + paziente.getCognome();
+        return id + " " + pazienteLabel + ": " + paziente.getNome() + " " + paziente.getCognome();
     }
 }
