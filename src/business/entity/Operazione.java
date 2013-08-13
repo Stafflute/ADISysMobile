@@ -45,4 +45,8 @@ public class Operazione implements Entity {
 	public void setId(String id) {
 		this.id = id;
 	}
+
+    public String toString() {
+        return id + ": " + nome;
+    }
 }

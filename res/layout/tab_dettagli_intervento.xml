@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<merge>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent" android:id="@+id/tabDettagliInterventoContent">
 
     <Space
             android:layout_width="8px"
@@ -12,11 +12,11 @@
     <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:id="@+id/scrollView1" android:fillViewport="true">
+            android:id="@+id/scrollView" android:fillViewport="true">
         <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
                         <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="New Text"
+
                                 android:id="@+id/idValue" android:layout_gravity="center_horizontal|top"/>
                     </LinearLayout>
                     <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
@@ -54,7 +54,7 @@
                                   android:id="@+id/cittaText" android:layout_gravity="center_horizontal|top"/>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=": "
                                   android:id="@+id/textView2" android:layout_gravity="center_horizontal|top"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="New Text"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                                   android:id="@+id/cittaValue" android:layout_gravity="center_horizontal|top"/>
                     </LinearLayout>
                     <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
@@ -63,7 +63,7 @@
                                   android:id="@+id/capText" android:layout_gravity="center_horizontal|top"/>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=": "
                                   android:id="@+id/textView3" android:layout_gravity="center_horizontal|top"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="New Text"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                                   android:id="@+id/capValue" android:layout_gravity="center_horizontal|top"/>
                     </LinearLayout>
                     <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
@@ -72,7 +72,7 @@
                                   android:id="@+id/indirizzoText" android:layout_gravity="center_horizontal|top"/>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=": "
                                   android:id="@+id/textView6" android:layout_gravity="center_horizontal|top"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="New Text"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                                   android:id="@+id/indirizzoValue" android:layout_gravity="center_horizontal|top"/>
                     </LinearLayout>
                     <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
@@ -81,7 +81,7 @@
                                   android:id="@+id/dataText" android:layout_gravity="center_horizontal|top"/>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=": "
                                   android:id="@+id/textView9" android:layout_gravity="center_horizontal|top"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="New Text"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                                   android:id="@+id/dataValue" android:layout_gravity="center_horizontal|top"/>
                     </LinearLayout>
                     <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
@@ -90,7 +90,7 @@
                                   android:id="@+id/oraText" android:layout_gravity="center_horizontal|top"/>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=": "
                                   android:id="@+id/textView12" android:layout_gravity="center_horizontal|top"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="New Text"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                                   android:id="@+id/oraValue" android:layout_gravity="center_horizontal|top"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -109,7 +109,7 @@
                                   android:id="@+id/idPazienteText" android:layout_gravity="center_horizontal|top"/>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=": "
                                   android:id="@+id/textView4" android:layout_gravity="center_horizontal|top"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="New Text"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                                   android:id="@+id/idPazienteValue" android:layout_gravity="center_horizontal|top"/>
                     </LinearLayout>
                     <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
@@ -118,7 +118,7 @@
                                   android:id="@+id/nomePazienteText" android:layout_gravity="center_horizontal|top"/>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=": "
                                   android:id="@+id/textView8" android:layout_gravity="center_horizontal|top"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="New Text"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                                   android:id="@+id/nomePazienteValue" android:layout_gravity="center_horizontal|top"/>
                     </LinearLayout>
                     <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
@@ -127,7 +127,7 @@
                                   android:id="@+id/cognomePazienteText" android:layout_gravity="center_horizontal|top"/>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=": "
                                   android:id="@+id/textView13" android:layout_gravity="center_horizontal|top"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="New Text"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                                   android:id="@+id/cognomePazienteValue" android:layout_gravity="center_horizontal|top"/>
                     </LinearLayout>
                     <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
@@ -136,7 +136,7 @@
                                   android:id="@+id/dataPazienteText" android:layout_gravity="center_horizontal|top"/>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=": "
                                   android:id="@+id/textView16" android:layout_gravity="center_horizontal|top"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="New Text"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                                   android:id="@+id/dataPazienteValue" android:layout_gravity="center_horizontal|top"/>
                     </LinearLayout>
                     <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
@@ -144,25 +144,15 @@
                         <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Rubrica telefonica"
+                                android:text="Numeri telefonici"
                                 android:id="@+id/rubricaText" android:paddingTop="3dp"/>
                         <LinearLayout
                                 android:orientation="horizontal"
-                                android:layout_width="fill_parent"
-                                android:layout_height="fill_parent">
-                            <Space
-                                    android:layout_width="12px"
-                                    android:layout_height="20px"
-                                    android:id="@+id/space"/>
-                            <ScrollView
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="75dp"
-                                    android:id="@+id/scrollView" android:fillViewport="true">
-                                <ListView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:id="@+id/rubricaList"/>
-                            </ScrollView>
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:layout_marginLeft="9dp">
+                            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
+                                          android:layout_height="wrap_content"
+                                    android:id="@+id/rubricaList"/>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -181,17 +171,8 @@
                                   android:id="@+id/idInfermiereText" android:layout_gravity="center_horizontal|top"/>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=": "
                                   android:id="@+id/textView7" android:layout_gravity="center_horizontal|top"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="New Text"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                                   android:id="@+id/idInfermiereValue" android:layout_gravity="center_horizontal|top"/>
-                    </LinearLayout>
-                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
-                                  android:layout_height="wrap_content" android:gravity="top" android:id="@+id/linearLayout11">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cognome"
-                                  android:id="@+id/cognomeInfermiereText" android:layout_gravity="center_horizontal|top"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=": "
-                                  android:id="@+id/textView14" android:layout_gravity="center_horizontal|top"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="New Text"
-                                  android:id="@+id/cognomeInfermiereValue" android:layout_gravity="center_horizontal|top"/>
                     </LinearLayout>
                     <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
                                   android:layout_height="wrap_content" android:gravity="top" android:id="@+id/linearLayout12">
@@ -199,11 +180,21 @@
                                   android:id="@+id/nomeInfermiereText" android:layout_gravity="center_horizontal|top"/>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=": "
                                   android:id="@+id/textView18" android:layout_gravity="center_horizontal|top"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="New Text"
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                                   android:id="@+id/nomeInfermiereValue" android:layout_gravity="center_horizontal|top"/>
+                    </LinearLayout>
+                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
+                                  android:layout_height="wrap_content" android:gravity="top" android:id="@+id/linearLayout11">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cognome"
+                                  android:id="@+id/cognomeInfermiereText" android:layout_gravity="center_horizontal|top"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=": "
+                                  android:id="@+id/textView14" android:layout_gravity="center_horizontal|top"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                  android:id="@+id/cognomeInfermiereValue" android:layout_gravity="center_horizontal|top"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
+</merge>

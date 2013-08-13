@@ -49,6 +49,6 @@ public class PianificazioneFile implements Serializable, Comparable<Pianificazio
     }
 
     public String toString() {
-        return dateTime.toString(DateConverter.EUROPEAN_DATE_FORMAT);
+        return dateTime.toString(DateConverter.EUROPEAN_DATE_TIME_FORMAT);
     }
 }
