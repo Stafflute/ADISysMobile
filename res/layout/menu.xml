@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+   <merge>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal" android:layout_width="match_parent"
+                  android:layout_height="wrap_content" android:gravity="right" android:id="@+id/linearLayout"
+                  android:paddingBottom="4dp">
+        <Button android:layout_width="wrap_content" android:layout_height="30dp" android:text="@string/back"
+                android:id="@+id/indietro" android:layout_gravity="right|center_vertical" android:textSize="12dp"/>
+        <Button android:layout_width="wrap_content" android:layout_height="30dp" android:text="@string/exit"
+                android:id="@+id/esci" android:layout_gravity="right|center_vertical" android:textSize="12dp"/>
+    </LinearLayout>
+</merge>
