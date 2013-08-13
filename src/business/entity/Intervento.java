@@ -9,6 +9,7 @@ public class Intervento implements Entity {
 	/**
 	 * 
 	 */
+    public static String pazienteLabel = "";
 
 	private static final long serialVersionUID = 3822067935716362954L;
 
@@ -92,6 +93,6 @@ public class Intervento implements Entity {
 	}
 
     public String toString() {
-        return id + " paziente: " + paziente.getNome() + " " + paziente.getCognome();
+        return id + pazienteLabel + paziente.getNome() + " " + paziente.getCognome();
     }
 }

@@ -1,6 +1,7 @@
 package presentation.boundary;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +26,7 @@ public class SchermataPianificazione extends Activity implements Boundary {
     private Pianificazione pianificazione;
 
     private Activity activity = this;
+    private Context context = this;
 
     private AdapterView.OnItemClickListener interventoClickListener = new AdapterView.OnItemClickListener() {
 
@@ -41,6 +43,7 @@ public class SchermataPianificazione extends Activity implements Boundary {
     private void init() {
         extras = getIntent().getExtras();
         parameter = (Parameter) extras.get(Parameter.PARAMETER);
+        Intervento.pazienteLabel = context.getString(R.string.patient) ;
     }
 
     public void onCreate(Bundle savedInstanceState) {

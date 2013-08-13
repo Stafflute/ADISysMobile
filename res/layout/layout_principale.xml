@@ -7,8 +7,8 @@
     <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Seleziona File"
-            android:textSize="30dp"/>
+            android:text="@string/select_file"
+            android:textSize="24dp"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
@@ -30,7 +30,7 @@
     <Button
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Ok"
-            android:id="@+id/fileConfirm" android:layout_gravity="center"/>
+            android:text="@string/ok"
+            android:id="@+id/fileConfirm" android:layout_gravity="center" android:singleLine="false"/>
 </LinearLayout>
 

@@ -1,4 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ADISysMobile</string>
+    <string name="app_name">ADISys Mobile</string>
+    <string name="ok">Ok</string>
+    <string name="select_file">Seleziona pianificazione</string>
+    <string name="back">Indietro</string>
+    <string name="exit">Esci</string>
+    <string name="select_intervention">Seleziona intervento</string>
+    <string name="patient">paziente</string>
+    <string name="intervention_title">Intervento</string>
+    <string name="details">Dettagli</string>
+    <string name="operation_list">Lista Operazioni</string>
+    <string name="execute_intervention">Esegui Intervento</string>
+    <string name="id">ID</string>
+    <string name="city">Città</string>
+    <string name="zip_code">CAP</string>
+    <string name="address">Indirizzo</string>
+    <string name="date">Data</string>
+    <string name="time">Ora</string>
+    <string name="name">Nome</string>
+    <string name="surname">Cognome</string>
+    <string name="birth_date">Data</string>
+    <string name="phone_numbers">Numeri telefonici</string>
+    <string name="patient_title">Paziente</string>
+    <string name="nurse_title">Infermiere</string>
 </resources>
