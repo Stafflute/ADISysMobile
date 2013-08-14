@@ -1,15 +1,10 @@
 package presentation.boundary;
 
 import android.app.Activity;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.*;
-import android.widget.AdapterView.OnItemSelectedListener;
 import business.entity.Intervento;
 import business.entity.Operazione;
 import com.adisys.R;
@@ -17,9 +12,7 @@ import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
 import util.DateConverter;
 import util.Parameter;
-import util.PianificazioneFile;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SchermataIntervento extends Activity implements Boundary {
@@ -44,9 +37,6 @@ public class SchermataIntervento extends Activity implements Boundary {
         context = this;
 
         init();
-
-        Parameter parameter1 = new Parameter();
-        parameter1.setValue("activity", activity);
         //fc.processRequest("AvviaGPS", parameter1);
     }
 
@@ -130,7 +120,7 @@ public class SchermataIntervento extends Activity implements Boundary {
         List<String> rubrica = intervento.getPaziente().getNumeroCellulare();
         LinearLayout rubricaListView = (LinearLayout) findViewById(R.id.rubricaList);
 
-        for(String numero : rubrica) {
+        for (String numero : rubrica) {
             TextView textView = (TextView) View.inflate(this, R.layout.rubrica_text, null);
             textView.setText(LIST_POINT + numero);
             rubricaListView.addView(textView);
@@ -140,16 +130,12 @@ public class SchermataIntervento extends Activity implements Boundary {
     private AdapterView.OnItemClickListener operazioneClickListener = new AdapterView.OnItemClickListener() {
 
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Parameter parameter = new Parameter();
-            parameter.setValue("activity", activity);
-            fc.processRequest("MostraSchermataOperazione", parameter);
+            fc.processRequest("MostraSchermataOperazione", null);
         }
     };
 
     public void onDestroy() {
         super.onDestroy();
-        Parameter parameter = new Parameter();
-        parameter.setValue("activity", activity);
-        fc.processRequest("StopGPS", parameter);
+        fc.processRequest("StopGPS", null);
     }
 }

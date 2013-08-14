@@ -1,14 +1,16 @@
 package presentation.boundary;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.*;
-import android.widget.AdapterView.*;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
 import com.adisys.R;
-import android.app.Activity;
-import android.os.Bundle;
-import android.util.Log;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
 import util.Parameter;
@@ -29,8 +31,7 @@ public class SchermataPrincipale extends Activity implements Boundary {
 
     private FrontController fc = FrontControllerFactory.buildInstance();
 
-    private OnItemSelectedListener fileSpinnerListener = new OnItemSelectedListener()
-    {
+    private OnItemSelectedListener fileSpinnerListener = new OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             selectedPianificazione = fileList.get(position);
@@ -47,11 +48,10 @@ public class SchermataPrincipale extends Activity implements Boundary {
         @Override
         public void onClick(View v) {
             Parameter parameter = new Parameter();
-            parameter.setValue("activity", activity);
             parameter.setValue("pianificazione", selectedPianificazione);
             Object valid = fc.processRequest("VerificaPianificazione", parameter);
-            if(valid != null) {
-                 fc.processRequest("MostraSchermataPianificazione", parameter);
+            if (valid != null) {
+                fc.processRequest("MostraSchermataPianificazione", parameter);
             }
         }
     };
@@ -67,8 +67,8 @@ public class SchermataPrincipale extends Activity implements Boundary {
         parameter.setValue("activity", activity);
         fc.processRequest("AvviaServiziPrincipali", parameter);
 
-        Spinner fileSpinner = (Spinner)findViewById(R.id.spinner);
-        Button fileConfirm = (Button)findViewById(R.id.fileConfirm);
+        Spinner fileSpinner = (Spinner) findViewById(R.id.spinner);
+        Button fileConfirm = (Button) findViewById(R.id.fileConfirm);
 
         fileList = (List<PianificazioneFile>) fc.processRequest("ElencaPianificazioni", null);
 
