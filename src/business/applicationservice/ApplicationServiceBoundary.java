@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import presentation.boundary.Boundary;
+import presentation.controller.ApplicationService;
+import util.ErrorPrinter;
 import util.Parameter;
 
-public class ApplicationServiceBoundary {
+public class ApplicationServiceBoundary implements ApplicationService {
 	private static final String BOUNDARY_PACKAGE_PATH = "presentation.boundary.";
 	private static final String SERVICE_NAME_HEAD = "Mostra";
 	private static final int BOUNDARY_NAME_START_POSITION = SERVICE_NAME_HEAD.length();
@@ -27,7 +29,7 @@ public class ApplicationServiceBoundary {
             intent.putExtra(Parameter.PARAMETER, parameter);
             activity.startActivity(intent);
         } catch (ClassNotFoundException e) {
-            Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
+            ErrorPrinter.print(e);
         }
 	}
 }

@@ -1,7 +1,9 @@
 package presentation.boundary;
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -42,6 +44,10 @@ public class SchermataIntervento extends Activity implements Boundary {
         context = this;
 
         init();
+
+        Parameter parameter1 = new Parameter();
+        parameter1.setValue("activity", activity);
+        //fc.processRequest("AvviaGPS", parameter1);
     }
 
     private void init() {
@@ -116,6 +122,7 @@ public class SchermataIntervento extends Activity implements Boundary {
     private void initListViews(Intervento intervento) {
         List<Operazione> operazioneList = intervento.getOperazione();
         ListView operazioneListView = (ListView) findViewById(R.id.listaOperazioni);
+        operazioneListView.setOnItemClickListener(operazioneClickListener);
 
         ArrayAdapter<Operazione> operazioneArrayAdapter = new ArrayAdapter<>(this, R.layout.simple_text, operazioneList);
         operazioneListView.setAdapter(operazioneArrayAdapter);
@@ -128,5 +135,21 @@ public class SchermataIntervento extends Activity implements Boundary {
             textView.setText(LIST_POINT + numero);
             rubricaListView.addView(textView);
         }
+    }
+
+    private AdapterView.OnItemClickListener operazioneClickListener = new AdapterView.OnItemClickListener() {
+
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Parameter parameter = new Parameter();
+            parameter.setValue("activity", activity);
+            fc.processRequest("MostraSchermataOperazione", parameter);
+        }
+    };
+
+    public void onDestroy() {
+        super.onDestroy();
+        Parameter parameter = new Parameter();
+        parameter.setValue("activity", activity);
+        fc.processRequest("StopGPS", parameter);
     }
 }

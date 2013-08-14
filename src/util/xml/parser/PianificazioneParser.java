@@ -9,6 +9,7 @@ import pl.polidea.TreeXMLParser.XMLInternalNode;
 import pl.polidea.TreeXMLParser.XMLLeafNode;
 import pl.polidea.TreeXMLParser.XMLNode;
 import pl.polidea.TreeXMLParser.XMLParser;
+import util.ErrorPrinter;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
@@ -35,11 +36,11 @@ public class PianificazioneParser {
             XMLNode root = parser.parse(new FileInputStream(file));
             pianificazione = deserialize(root);
         } catch (SAXException e) {
-            Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
+            ErrorPrinter.print(e);
         } catch (ParserConfigurationException e) {
-            Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
+            ErrorPrinter.print(e);
         } catch (IOException e) {
-            Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
+            ErrorPrinter.print(e);
         }
         return pianificazione;
     }

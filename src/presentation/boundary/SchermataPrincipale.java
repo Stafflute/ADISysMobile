@@ -60,6 +60,10 @@ public class SchermataPrincipale extends Activity implements Boundary {
 
         context = this;
 
+        Parameter parameter = new Parameter();
+        parameter.setValue("context", getApplicationContext());
+        fc.processRequest("AvviaDisplayErrori", parameter);
+
         Spinner fileSpinner = (Spinner)findViewById(R.id.spinner);
         Button fileConfirm = (Button)findViewById(R.id.fileConfirm);
 

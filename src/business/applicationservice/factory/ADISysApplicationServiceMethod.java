@@ -1,7 +1,9 @@
 package business.applicationservice.factory;
 
 import android.util.Log;
+import business.applicationservice.exception.CommonException;
 import presentation.controller.ApplicationService;
+import util.ErrorPrinter;
 import util.Parameter;
 
 import java.lang.reflect.InvocationTargetException;
@@ -15,7 +17,7 @@ class ADISysApplicationServiceMethod implements ApplicationServiceMethod {
 		this.as = as;
 	}
 
-	public Object invoke(String serviceName, Parameter parameter) {
+	public Object invoke(String serviceName, Parameter parameter) throws CommonException {
 		Object result = null;
 		try {
 			
@@ -26,15 +28,22 @@ class ADISysApplicationServiceMethod implements ApplicationServiceMethod {
 			result = asMethod.invoke(as, parameter);
 			
 		} catch (IllegalAccessException e) {
-            Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
+            ErrorPrinter.print(e);
 		} catch (IllegalArgumentException e) {
-            Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
+            ErrorPrinter.print(e);
 		} catch (InvocationTargetException e) {
-            Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
-		} catch (NoSuchMethodException e) {
-            Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
+            Throwable cause = e.getCause();
+            Class<?> causeClass = cause.getClass();
+            if (CommonException.class.isAssignableFrom(causeClass)) {
+                   CommonException commonCause = (CommonException) cause;
+                   throw commonCause;
+            } else {
+                ErrorPrinter.print(e);
+            }
+   		} catch (NoSuchMethodException e) {
+            ErrorPrinter.print(e);
 		} catch (SecurityException e) {
-            Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
+            ErrorPrinter.print(e);
 		}
 		return result;
 	}
