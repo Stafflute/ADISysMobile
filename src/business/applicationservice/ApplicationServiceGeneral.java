@@ -14,7 +14,7 @@ import util.Parameter;
  */
 public class ApplicationServiceGeneral implements ApplicationService {
 
-    static Activity activity = null;
+    public static Activity activity = null;
 
     public void start(Parameter parameter) {
 

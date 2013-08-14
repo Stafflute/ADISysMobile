@@ -19,7 +19,7 @@ public class ApplicationServiceRilevazione implements ApplicationService {
 
     public void stopReceiving(Parameter parameter) throws NotStartedGPSServiceException {
         if (gpsComponent == null) {
-            throw new NotStartedGPSServiceException("Trying to stop a stopped Rilevazione");
+            throw new NotStartedGPSServiceException();
         }
         Activity activity = ApplicationServiceGeneral.activity;
         Intent intent = new Intent(activity.getApplicationContext(), GPSListener.class);
