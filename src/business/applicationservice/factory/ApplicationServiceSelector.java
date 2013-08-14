@@ -16,8 +16,11 @@ class ApplicationServiceSelector {
         asMap.selectApplicationServiceBy("ElencaInterventi");
         asMap.setApplicationServiceValues("ApplicationServicePianificazione", "getPianificazione");
 
-        asMap.selectApplicationServiceBy("AvviaDisplayErrori");
-        asMap.setApplicationServiceValues("ApplicationServiceToast", "startToast");
+        asMap.selectApplicationServiceBy("VerificaPianificazione");
+        asMap.setApplicationServiceValues("ApplicationServicePianificazione", "checkValid");
+
+        asMap.selectApplicationServiceBy("AvviaServiziPrincipali");
+        asMap.setApplicationServiceValues("ApplicationServiceGeneral", "start");
 
         asMap.selectApplicationServiceBy("AvviaGPS");
         asMap.setApplicationServiceValues("ApplicationServiceGPS", "startReceiving");

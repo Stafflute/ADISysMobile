@@ -8,19 +8,27 @@ package business.applicationservice;
  * To change this template use File | Settings | File Templates.
  */
 
+import android.content.res.AssetManager;
 import android.util.Log;
+import business.applicationservice.exception.CommonException;
+import business.applicationservice.exception.NotValidatedPianificazioneFormatException;
+import business.applicationservice.exception.PianificazioneNotFoundException;
 import business.entity.Intervento;
 import business.entity.Pianificazione;
+import mf.javax.xml.transform.stream.StreamSource;
+import mf.javax.xml.validation.Schema;
+import mf.javax.xml.validation.SchemaFactory;
+import mf.javax.xml.validation.Validator;
+import mf.org.apache.xerces.jaxp.validation.XMLSchemaFactory;
+import org.xml.sax.SAXException;
 import presentation.controller.ApplicationService;
-import util.AndroidPath;
-import util.FolderManager;
-import util.Parameter;
-import util.PianificazioneFile;
+import util.*;
 import util.xml.parser.PianificazioneParser;
 
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -35,6 +43,8 @@ public class ApplicationServicePianificazione implements ApplicationService {
     private static final String ROOT_PATH = "adisysmobile";
     private static final String IMPORTAZIONE_PATH = "importazione";
     private static final String CANONICAL_IMPORTAZIONE_PATH = ROOT_PATH + File.separator + IMPORTAZIONE_PATH ;
+
+    private static final String XML_PIANIFICAZIONE_SCHEMA = "schema/XMLPianificazioneSchema.xsd";
 
     private FileFilter filter = new FileFilter() {
         @Override
@@ -79,12 +89,40 @@ public class ApplicationServicePianificazione implements ApplicationService {
 
         PianificazioneFile fileDetailed = (PianificazioneFile) parameter.getValue("pianificazione");
         File file = fileDetailed.getFile();
+
         try {
             pianificazione = PianificazioneParser.parse(file);
         } catch (Throwable e) {
-            Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
+            ErrorPrinter.print(e);
         }
 
         return pianificazione;
+    }
+
+    public Boolean checkValid(Parameter parameter) throws CommonException {
+        PianificazioneFile fileDetailed = (PianificazioneFile) parameter.getValue("pianificazione");
+
+        if(fileDetailed == null) {
+            throw new PianificazioneNotFoundException();
+        }
+
+        File file = fileDetailed.getFile();
+
+        Boolean valid = false;
+        AssetManager assetManager = ApplicationServiceGeneral.activity.getAssets();
+        SchemaFactory schemaFactory = new XMLSchemaFactory();
+
+        try {
+            InputStream inputStream = assetManager.open(XML_PIANIFICAZIONE_SCHEMA);
+            Schema schema = schemaFactory.newSchema(new StreamSource(inputStream));
+            Validator validator = schema.newValidator();
+            validator.validate(new StreamSource(file));
+            valid = true;
+        } catch (SAXException e) {
+            throw new NotValidatedPianificazioneFormatException(e.getMessage());
+        } catch (IOException e) {
+            ErrorPrinter.print(e);
+        }
+        return valid;
     }
 }

@@ -23,11 +23,13 @@ public class Parameter implements Serializable {
             Entry<String, Object> entry = iterator.next();
             String key = entry.getKey();
             Object object = entry.getValue();
-            Class<?> serializable = Serializable.class;
-            Class<?> objectClass = object.getClass();
+            if (object != null)  {
+                Class<?> serializable = Serializable.class;
+                Class<?> objectClass = object.getClass();
 
-            if(!serializable.isAssignableFrom(objectClass)) {
-                iterator.remove();
+                if(!serializable.isAssignableFrom(objectClass)) {
+                    iterator.remove();
+                }
             }
         }
     }

@@ -1,5 +1,6 @@
-package util.xml.parser;
+package business.applicationservice.exception;
 
+import business.applicationservice.ErrorToastDialog;
 import business.applicationservice.exception.CommonException;
 
 /**
@@ -10,9 +11,12 @@ import business.applicationservice.exception.CommonException;
  * To change this template use File | Settings | File Templates.
  */
 public class NotValidatedPianificazioneFormatException extends CommonException {
+    public NotValidatedPianificazioneFormatException(String message) {
+        super();
+    }
+
     @Override
     public void reportException() {
-        String fileName = getMessage();
-
+        ErrorToastDialog.show("File is not a valid Pianificazione file");
     }
 }

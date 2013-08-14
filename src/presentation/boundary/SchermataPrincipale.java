@@ -49,7 +49,10 @@ public class SchermataPrincipale extends Activity implements Boundary {
             Parameter parameter = new Parameter();
             parameter.setValue("activity", activity);
             parameter.setValue("pianificazione", selectedPianificazione);
-            fc.processRequest("MostraSchermataPianificazione", parameter);
+            Object valid = fc.processRequest("VerificaPianificazione", parameter);
+            if(valid != null) {
+                 fc.processRequest("MostraSchermataPianificazione", parameter);
+            }
         }
     };
 
@@ -61,8 +64,8 @@ public class SchermataPrincipale extends Activity implements Boundary {
         context = this;
 
         Parameter parameter = new Parameter();
-        parameter.setValue("context", getApplicationContext());
-        fc.processRequest("AvviaDisplayErrori", parameter);
+        parameter.setValue("activity", activity);
+        fc.processRequest("AvviaServiziPrincipali", parameter);
 
         Spinner fileSpinner = (Spinner)findViewById(R.id.spinner);
         Button fileConfirm = (Button)findViewById(R.id.fileConfirm);

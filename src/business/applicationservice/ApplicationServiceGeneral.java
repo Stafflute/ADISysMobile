@@ -12,10 +12,14 @@ import util.Parameter;
  * Time: 13:01
  * To change this template use File | Settings | File Templates.
  */
-public class ApplicationServiceToast implements ApplicationService {
+public class ApplicationServiceGeneral implements ApplicationService {
 
-    public void startToast(Parameter parameter) {
-        Context context = (Context) parameter.getValue("context");
+    static Activity activity = null;
+
+    public void start(Parameter parameter) {
+
+        activity = (Activity) parameter.getValue("activity");
+        Context context = activity.getApplicationContext();
         ErrorToastDialog.context = context;
     }
 }

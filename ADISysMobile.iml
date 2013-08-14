@@ -64,10 +64,10 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/gson-2.2.4.jar!/" />
+          <root url="jar://$MODULE_DIR$/treexmlparser-android-read-only.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -76,7 +76,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/treexmlparser-android-read-only.jar!/" />
+          <root url="jar://$MODULE_DIR$/xerces-for-android-read-only.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
