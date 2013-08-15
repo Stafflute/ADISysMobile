@@ -23,4 +23,6 @@
     <string name="phone_numbers">Numeri telefonici</string>
     <string name="patient_title">Paziente</string>
     <string name="nurse_title">Infermiere</string>
+    <string name="finish_intervention">Finisci intervento</string>
+    <string name="abort_intervention">Annulla intervento</string>
 </resources>

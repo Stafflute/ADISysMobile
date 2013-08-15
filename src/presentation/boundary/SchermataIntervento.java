@@ -145,6 +145,8 @@ public class SchermataIntervento extends Activity implements Boundary {
 
     private boolean isExecutable = true;
     private Button executeButton;
+    private Button finishButton;
+    private Button abortButton;
 
     private static final float OPAQUE = 1;
     private static final float TRANSPARENT = 0.5f;
@@ -157,9 +159,29 @@ public class SchermataIntervento extends Activity implements Boundary {
                 if (isExecutable) {
                     isExecutable = false;
                     operazioneListView.setClickable(true);
-                    operazioneListView.setAlpha(1);
+                    operazioneListView.setAlpha(OPAQUE);
                     executeButton.setVisibility(View.GONE);
+                    finishButton.setVisibility(View.VISIBLE);
+                    abortButton.setVisibility(View.VISIBLE);
                     fc.processRequest("EseguiIntervento", parameter);
+                }
+            }
+        }
+    };
+
+    private View.OnClickListener abortInterventoListener = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            synchronized (this) {
+                if (!isExecutable) {
+                    isExecutable = true;
+                    operazioneListView.setClickable(false);
+                    operazioneListView.setAlpha(TRANSPARENT);
+                    executeButton.setVisibility(View.VISIBLE);
+                    finishButton.setVisibility(View.GONE);
+                    abortButton.setVisibility(View.GONE);
+                    fc.processRequest("InterrompiEsecuzione", null);
                 }
             }
         }
@@ -168,5 +190,10 @@ public class SchermataIntervento extends Activity implements Boundary {
     private void initButtons() {
         executeButton = (Button) findViewById(R.id.eseguiIntervento);
         executeButton.setOnClickListener(executeInterventoListener);
+
+        finishButton = (Button) findViewById(R.id.finisciIntervento);
+        abortButton = (Button) findViewById(R.id.annullaIntervento);
+
+        abortButton.setOnClickListener(abortInterventoListener);
     }
 }

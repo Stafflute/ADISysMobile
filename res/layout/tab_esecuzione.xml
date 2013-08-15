@@ -9,11 +9,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="10px"
                 android:id="@+id/space" android:layout_gravity="left|center_vertical"/>
-        <Button
+        <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/execute_intervention"
-                android:id="@+id/eseguiIntervento" android:layout_gravity="center" android:clickable="true"/>
+                android:layout_height="wrap_content" android:layout_gravity="center_horizontal">
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/execute_intervention"
+                    android:id="@+id/eseguiIntervento" android:layout_gravity="center" android:clickable="true"
+                    />
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/finish_intervention" android:id="@+id/finisciIntervento"
+                    android:layout_gravity="center" android:clickable="true" android:visibility="gone"
+                    android:textSize="15dp"/>
+            <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/abort_intervention" android:id="@+id/annullaIntervento"
+                    android:layout_gravity="center" android:clickable="true" android:visibility="gone"
+                    android:textSize="15dp"/>
+        </LinearLayout>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

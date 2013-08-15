@@ -58,10 +58,14 @@ public class ApplicationServiceRilevazione implements ApplicationService {
     }
 
     public static synchronized void addGPS(GPS gps) {
-        gpsList.add(gps);
+        if (gpsList != null) {
+            gpsList.add(gps);
+        }
     }
 
     public static synchronized void addAccelerometro(Accelerometro accelerometro) {
-        accelerometroList.add(accelerometro);
+        if (accelerometroList != null) {
+            accelerometroList.add(accelerometro);
+        }
     }
 }
