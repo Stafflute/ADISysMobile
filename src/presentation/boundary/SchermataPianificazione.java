@@ -27,6 +27,7 @@ public class SchermataPianificazione extends Activity implements Boundary {
 
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Parameter parameter = new Parameter();
+            parameter.setValue(ACTIVITY, activity);
             parameter.setValue("intervento", pianificazione.getIntervento().get(position));
             fc.processRequest("MostraSchermataIntervento", parameter);
         }

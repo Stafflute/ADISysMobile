@@ -24,12 +24,14 @@ public class AccelerometerListener extends Service implements SensorEventListene
     private int z = 0;
 
     private int count = 0;
-    private final static int MAX_COUNT = 60;
+    private final static int MAX_COUNT = 40;
 
     private static final int SENSOR_DELAY_VERY_HIGH = 15 * 1000000;
 
     private SensorManager sensorManager;
     private Sensor accelerometer;
+
+    private boolean startSignal = true;
 
     public AccelerometerListener() {
 
@@ -77,12 +79,12 @@ public class AccelerometerListener extends Service implements SensorEventListene
 
             count++;
 
-            if (count >= MAX_COUNT) {
+            if ((count >= MAX_COUNT) || startSignal) {
                 Accelerometro accelerometro = new Accelerometro();
 
-                accelerometro.setX(x / MAX_COUNT);
-                accelerometro.setY(y / MAX_COUNT);
-                accelerometro.setZ(z / MAX_COUNT);
+                accelerometro.setX(x / count);
+                accelerometro.setY(y / count);
+                accelerometro.setZ(z / count);
 
                 x = 0;
                 y = 0;
@@ -92,6 +94,8 @@ public class AccelerometerListener extends Service implements SensorEventListene
 
                 ApplicationServiceRilevazione.addAccelerometro(accelerometro);
                 Log.d("AndroidRuntime", "Accelerometer coords: " + accelerometro.toString());
+
+                startSignal = false;
             }
         }
     }

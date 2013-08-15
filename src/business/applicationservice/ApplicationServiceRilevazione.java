@@ -5,13 +5,11 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.util.Log;
 import business.applicationservice.exception.NotStartedServiceException;
-import business.entity.Accelerometro;
-import business.entity.GPS;
-import business.entity.Intervento;
-import business.entity.InterventoCompleto;
+import business.entity.*;
 import business.listener.accelerometer.AccelerometerListener;
 import business.listener.gps.AdressParser;
 import business.listener.gps.GPSListener;
+import org.joda.time.LocalTime;
 import presentation.controller.ApplicationService;
 import util.Parameter;
 
@@ -22,12 +20,17 @@ public class ApplicationServiceRilevazione implements ApplicationService {
     private static ComponentName gpsComponent;
     private static ComponentName accelerometerComponent;
     private static InterventoCompleto interventoCompleto;
+    private static List<Operazione> operazioneList;
     private static List<GPS> gpsList = new LinkedList<>();
     private static List<Accelerometro> accelerometroList = new LinkedList<>();
 
     public synchronized void startReceiving(Parameter parameter) throws NotStartedServiceException {
+        gpsList = new LinkedList<>();
+        accelerometroList = new LinkedList<>();
+
         Intervento intervento = (Intervento) parameter.getValue("intervento");
         interventoCompleto = new InterventoCompleto(intervento);
+        operazioneList = interventoCompleto.getOperazione();
 
         GPS adressGPS = AdressParser.getCoordinates(intervento);
         gpsList.add(adressGPS);
@@ -58,8 +61,8 @@ public class ApplicationServiceRilevazione implements ApplicationService {
         activity.stopService(intentAccelerometer);
         gpsComponent = null;
         accelerometerComponent = null;
-        gpsList = new LinkedList<>();
-        accelerometroList = new LinkedList<>();
+        gpsList = null;
+        accelerometroList = null;
     }
 
     public static synchronized void addGPS(GPS gps) {
@@ -72,5 +75,23 @@ public class ApplicationServiceRilevazione implements ApplicationService {
         if (accelerometroList != null) {
             accelerometroList.add(accelerometro);
         }
+    }
+
+    public synchronized void registerValues(Parameter parameter) {
+        int position = (int) parameter.getValue("posizione");
+        Operazione operazione = operazioneList.get(position);
+
+        String nota = (String) parameter.getValue("nota");
+        operazione.setNota(nota);
+
+        ValoreRilevato valoreRilevato = new ValoreRilevato();
+        String misura = (String) parameter.getValue("misura");
+        LocalTime tempoOperazione = new LocalTime((long) parameter.getValue("tempoOperazione"));
+
+        valoreRilevato.setMisura(misura);
+        valoreRilevato.setTempoOperazione(tempoOperazione);
+
+        operazione.setValoreRilevato(valoreRilevato);
+        Log.i("AndroidRuntime", "registered values at id " + operazioneList.get(position).getId() + " in " + tempoOperazione + " secs");
     }
 }

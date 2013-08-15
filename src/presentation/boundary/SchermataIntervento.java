@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.*;
 import business.entity.Intervento;
 import business.entity.Operazione;
@@ -110,13 +111,15 @@ public class SchermataIntervento extends Activity implements Boundary {
     }
 
     private ListView operazioneListView;
+    private List<Operazione> operazioneList;
+    SelectionArrayAdapter<Operazione> operazioneArrayAdapter;
 
     private void initListViews(Intervento intervento) {
-        List<Operazione> operazioneList = intervento.getOperazione();
+        operazioneList = intervento.getOperazione();
         operazioneListView = (ListView) findViewById(R.id.listaOperazioni);
         operazioneListView.setOnItemClickListener(operazioneClickListener);
 
-        ArrayAdapter<Operazione> operazioneArrayAdapter = new ArrayAdapter<>(this, R.layout.simple_text, operazioneList);
+        operazioneArrayAdapter = new SelectionArrayAdapter<>(this, R.layout.simple_text, operazioneList);
         operazioneListView.setAdapter(operazioneArrayAdapter);
 
         List<String> rubrica = intervento.getPaziente().getNumeroCellulare();
@@ -133,7 +136,13 @@ public class SchermataIntervento extends Activity implements Boundary {
 
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             if (!isExecutable) {
-                fc.processRequest("MostraSchermataOperazione", null);
+                operazioneArrayAdapter.setSelected(position);
+                operazioneListView.setAdapter(operazioneArrayAdapter);
+                Parameter parameter = new Parameter();
+                parameter.setValue(ACTIVITY, activity);
+                parameter.setValue("posizioneOperazione", position);
+                parameter.setValue("operazione", operazioneList.get(position));
+                fc.processRequest("MostraSchermataOperazione", parameter);
             }
         }
     };
@@ -181,6 +190,8 @@ public class SchermataIntervento extends Activity implements Boundary {
                     executeButton.setVisibility(View.VISIBLE);
                     finishButton.setVisibility(View.GONE);
                     abortButton.setVisibility(View.GONE);
+                    operazioneArrayAdapter.resetAll();
+                    operazioneListView.setAdapter(operazioneArrayAdapter);
                     fc.processRequest("InterrompiEsecuzione", null);
                 }
             }
@@ -197,4 +208,46 @@ public class SchermataIntervento extends Activity implements Boundary {
         abortButton.setOnClickListener(abortInterventoListener);
     }
 
+}
+
+class SelectionArrayAdapter<T> extends ArrayAdapter<T> {
+
+    public SelectionArrayAdapter(Context context, int textViewResourceId, List<T> objects) {
+        super(context, textViewResourceId, objects);
+
+        size = objects.size();
+        selectedObject = new boolean[size];
+        setNotifyOnChange(true);
+    }
+
+    private int size;
+    private boolean[] selectedObject;
+
+    private static final float SELECTED_TRANSPARENCY = 0.7f;
+    private static final float OPAQUE = 1;
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View view = super.getView(position, convertView, parent);
+        if (selectedObject[position]) {
+            float selectedTransparency = SELECTED_TRANSPARENCY;
+            view.setAlpha(selectedTransparency);
+        }
+        return view;
+    }
+
+    public void setSelected(int position) {
+        selectedObject[position] = true;
+    }
+
+    public void resetAll() {
+        selectedObject = new boolean[size];
+    }
+
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
+        size = this.getCount();
+        resetAll();
+    }
 }

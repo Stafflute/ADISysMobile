@@ -2,6 +2,7 @@ package business.applicationservice;
 
 import android.app.Activity;
 import android.content.Intent;
+import presentation.boundary.Boundary;
 import presentation.controller.ApplicationService;
 import util.ErrorPrinter;
 import util.Parameter;
@@ -16,7 +17,7 @@ public class ApplicationServiceBoundary implements ApplicationService {
     }
 
     public static void startBoundary(String serviceName, Parameter parameter) {
-        Activity activity = ApplicationServiceGeneral.activity;
+        Activity activity = (Activity) parameter.getValue(Boundary.ACTIVITY);
         String boundaryClassString = serviceName.substring(BOUNDARY_NAME_START_POSITION);
         Class<?> boundaryClass = null;
         try {
@@ -26,7 +27,7 @@ public class ApplicationServiceBoundary implements ApplicationService {
                 parameter.removeNotSerializable();
             }
             intent.putExtra(Parameter.PARAMETER, parameter);
-            activity.startActivity(intent);
+            activity.startActivityForResult(intent, Boundary.RESULT);
         } catch (ClassNotFoundException e) {
             ErrorPrinter.print(e);
         }

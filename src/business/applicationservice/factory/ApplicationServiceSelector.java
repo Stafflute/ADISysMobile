@@ -27,6 +27,9 @@ class ApplicationServiceSelector {
 
         asMap.selectApplicationServiceBy("InterrompiEsecuzione");
         asMap.setApplicationServiceValues("ApplicationServiceRilevazione", "stopReceiving");
+
+        asMap.selectApplicationServiceBy("RegistraValori");
+        asMap.setApplicationServiceValues("ApplicationServiceRilevazione", "registerValues");
     }
 
     private ApplicationServiceSelector() {

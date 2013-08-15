@@ -11,17 +11,17 @@
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" android:visibility="visible">
+                android:layout_height="match_parent" android:visibility="visible">
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/insert_values"
-                    android:id="@+id/textView" android:layout_gravity="left|center_vertical" android:textSize="24dp"
+                    android:id="@+id/textView" android:layout_gravity="left|center_vertical" android:textSize="28dp"
                     android:layout_marginLeft="4dp"/>
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" android:layout_marginLeft="8dp">
+                    android:layout_height="fill_parent" android:layout_marginLeft="10dp" android:paddingBottom="20dp">
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/idOperazioneValue" android:textSize="16dp" android:layout_marginLeft="4dp"/>
+                        android:id="@+id/idOperazioneValue" android:textSize="16dp" android:layout_marginLeft="9dp"/>
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/nomeOperazioneValue" android:textSize="16dp" android:layout_marginLeft="4dp"/>
+                        android:id="@+id/nomeOperazioneValue" android:textSize="16dp" android:layout_marginLeft="9dp"/>
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/valoreRilevatoValue" android:textIsSelectable="false" android:textSize="16dp"
-                        android:singleLine="true" android:editable="true" android:layout_marginLeft="4dp"
+                        android:singleLine="true" android:editable="true" android:layout_marginLeft="5dp"
                         android:gravity="center_vertical"/>
                 <TextView
                         android:layout_width="wrap_content"
@@ -58,15 +58,9 @@
                         android:id="@+id/textView4" android:textSize="18dp"/>
                 <EditText
                         android:layout_width="fill_parent"
-                        android:layout_height="80dp"
+                        android:layout_height="fill_parent"
                         android:id="@+id/notaValue" android:textSize="16dp" android:editable="true"
-                        android:layout_marginLeft="4dp" android:gravity="left|top"/>
-                <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/confirm"
-                        android:id="@+id/confirmOperationButton" android:layout_gravity="center"
-                        android:layout_marginTop="10dp"/>
+                        android:layout_marginLeft="5dp" android:gravity="left|top"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout

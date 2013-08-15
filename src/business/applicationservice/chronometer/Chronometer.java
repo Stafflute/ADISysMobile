@@ -2,6 +2,7 @@ package business.applicationservice.chronometer;
 
 import org.joda.time.LocalTime;
 
+@Deprecated
 public class Chronometer {
     private Long begin = null;
     private Long end = null;

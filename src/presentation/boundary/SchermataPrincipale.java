@@ -48,6 +48,7 @@ public class SchermataPrincipale extends Activity implements Boundary {
         @Override
         public void onClick(View v) {
             Parameter parameter = new Parameter();
+            parameter.setValue(ACTIVITY, activity);
             parameter.setValue("pianificazione", selectedPianificazione);
             Object valid = fc.processRequest("VerificaPianificazione", parameter);
             if (valid != null) {
