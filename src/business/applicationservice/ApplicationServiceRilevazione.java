@@ -25,12 +25,17 @@ public class ApplicationServiceRilevazione implements ApplicationService {
     private static List<GPS> gpsList = new LinkedList<>();
     private static List<Accelerometro> accelerometroList = new LinkedList<>();
 
-    public void startReceiving(Parameter parameter) {
+    public synchronized void startReceiving(Parameter parameter) throws NotStartedServiceException {
         Intervento intervento = (Intervento) parameter.getValue("intervento");
         interventoCompleto = new InterventoCompleto(intervento);
 
         GPS adressGPS = AdressParser.getCoordinates(intervento);
         gpsList.add(adressGPS);
+
+        //Check if the signal listening is active
+        if ((gpsComponent != null) || (accelerometerComponent != null)) {
+            stopReceiving(parameter);
+        }
 
         Log.i("AndroidRuntime", "Parsered GPS geocoding: " + ((adressGPS != null) ? adressGPS : "null"));
 
@@ -42,7 +47,7 @@ public class ApplicationServiceRilevazione implements ApplicationService {
 
     }
 
-    public void stopReceiving(Parameter parameter) throws NotStartedServiceException {
+    public synchronized void stopReceiving(Parameter parameter) throws NotStartedServiceException {
         if ((gpsComponent == null) || (accelerometerComponent == null)) {
             throw new NotStartedServiceException();
         }

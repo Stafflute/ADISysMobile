@@ -1,5 +1,7 @@
 package business.entity;
 
+import org.joda.time.LocalDateTime;
+
 /**
  * Created with IntelliJ IDEA.
  * User: michelesummo
@@ -11,6 +13,11 @@ public class Accelerometro {
     private double x;
     private double y;
     private double z;
+    private LocalDateTime data;
+
+    public Accelerometro() {
+        data = LocalDateTime.now();
+    }
 
     public double getX() {
         return x;
@@ -34,6 +41,14 @@ public class Accelerometro {
 
     public void setZ(double z) {
         this.z = z;
+    }
+
+    public LocalDateTime getData() {
+        return data;
+    }
+
+    public void setData(LocalDateTime data) {
+        this.data = data;
     }
 
     public String toString() {

@@ -25,4 +25,10 @@
     <string name="nurse_title">Infermiere</string>
     <string name="finish_intervention">Finisci intervento</string>
     <string name="abort_intervention">Annulla intervento</string>
+    <string name="insert_values">Inserisci valori</string>
+    <string name="operation_name">Nome</string>
+    <string name="note">Nota</string>
+    <string name="derived_value">Valore rilevato</string>
+    <string name="elapsed_time">Tempo</string>
+    <string name="confirm">Conferma</string>
 </resources>
