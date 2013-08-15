@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent" android:id="@+id/tabEsecuzioneContent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent" android:id="@+id/tabEsecuzioneContent">
 
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/execute_intervention"
-            android:id="@+id/eseguiIntervento" android:layout_gravity="center"/>
-    <ScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/scrollViewA" android:layout_gravity="left|center_vertical" android:fillViewport="true">
-        <ListView
+        <Space
+                android:layout_width="wrap_content"
+                android:layout_height="10px"
+                android:id="@+id/space" android:layout_gravity="left|center_vertical"/>
+        <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/listaOperazioni" android:clickable="true"/>
-    </ScrollView>
-</LinearLayout>
+                android:text="@string/execute_intervention"
+                android:id="@+id/eseguiIntervento" android:layout_gravity="center" android:clickable="true"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/operation_list"
+                android:id="@+id/textView" android:textSize="22dp" android:paddingTop="8dp"/>
+        <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/scrollViewA" android:layout_gravity="left|center_vertical" android:fillViewport="true">
+            <ListView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/listaOperazioni" android:clickable="true"/>
+        </ScrollView>
+    </LinearLayout>
 </merge>

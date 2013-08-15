@@ -9,7 +9,7 @@
     <string name="patient">paziente</string>
     <string name="intervention_title">Intervento</string>
     <string name="details">Dettagli</string>
-    <string name="operation_list">Lista Operazioni</string>
+    <string name="operation_list">Lista operazioni</string>
     <string name="execute_intervention">Esegui Intervento</string>
     <string name="id">ID</string>
     <string name="city">Città</string>

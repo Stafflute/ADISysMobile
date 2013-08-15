@@ -22,10 +22,10 @@ class ApplicationServiceSelector {
         asMap.selectApplicationServiceBy("AvviaServiziPrincipali");
         asMap.setApplicationServiceValues("ApplicationServiceGeneral", "start");
 
-        asMap.selectApplicationServiceBy("AvviaGPS");
+        asMap.selectApplicationServiceBy("EseguiIntervento");
         asMap.setApplicationServiceValues("ApplicationServiceRilevazione", "startReceiving");
 
-        asMap.selectApplicationServiceBy("StopGPS");
+        asMap.selectApplicationServiceBy("InterrompiEsecuzione");
         asMap.setApplicationServiceValues("ApplicationServiceRilevazione", "stopReceiving");
     }
 

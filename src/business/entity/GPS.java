@@ -28,4 +28,8 @@ public class GPS implements Entity {
 
     private double latitudine;
     private double longitudine;
+
+    public String toString() {
+        return "(" + latitudine + ", " + longitudine + ")";
+    }
 }

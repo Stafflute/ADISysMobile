@@ -37,7 +37,6 @@ public class SchermataIntervento extends Activity implements Boundary {
         context = this;
 
         init();
-        //fc.processRequest("AvviaGPS", parameter1);
     }
 
     private void init() {
@@ -49,6 +48,7 @@ public class SchermataIntervento extends Activity implements Boundary {
         initTabs();
         initTexts(intervento);
         initListViews(intervento);
+        initButtons();
 
     }
 
@@ -136,6 +136,26 @@ public class SchermataIntervento extends Activity implements Boundary {
 
     public void onDestroy() {
         super.onDestroy();
-        fc.processRequest("StopGPS", null);
+        fc.processRequest("InterrompiEsecuzione", null);
+    }
+
+    private boolean isExecutable = true;
+
+    private View.OnClickListener executeInterventoListener = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            synchronized (this) {
+                if (isExecutable) {
+                    isExecutable = false;
+                    fc.processRequest("EseguiIntervento", parameter);
+                }
+            }
+        }
+    };
+
+    private void initButtons() {
+        Button executeButton = (Button) findViewById(R.id.eseguiIntervento);
+        executeButton.setOnClickListener(executeInterventoListener);
     }
 }

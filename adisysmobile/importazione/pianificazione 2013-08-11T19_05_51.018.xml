@@ -1,32 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <pianificazione>
     <intervento>
-        <id>95</id>
-        <citta>Bari</citta>
-        <cap>70123</cap>
-        <indirizzo>via nicolai 287</indirizzo>
-        <data>2015-12-11</data>
-        <ora>12:00:00.000</ora>
-        <listaOperazioni/>
-        <paziente>
-            <id>110</id>
-            <nome>l LL</nome>
-            <cognome>KKk</cognome>
-            <data>2002-12-12</data>
-            <rubrica>
-                <numero>124</numero>
-                <numero>1412</numero>
-                <numero>1214</numero>
-                <numero>32424</numero>
-            </rubrica>
-        </paziente>
-        <infermiere>
-            <id>106</id>
-            <nome>aaa</nome>
-            <cognome>bbb</cognome>
-        </infermiere>
-    </intervento>
-    <intervento>
         <id>96</id>
         <citta>Bari</citta>
         <cap>70123</cap>
@@ -60,8 +34,8 @@
     <intervento>
         <id>97</id>
         <citta>Bari</citta>
-        <cap>12481</cap>
-        <indirizzo>via aaa 123</indirizzo>
+        <cap>70123</cap>
+        <indirizzo>via nicolai 287</indirizzo>
         <data>2015-12-11</data>
         <ora>23:59:59.000</ora>
         <listaOperazioni>
@@ -94,8 +68,8 @@
     <intervento>
         <id>98</id>
         <citta>Bari</citta>
-        <cap>12481</cap>
-        <indirizzo>via aaa 123</indirizzo>
+        <cap>70123</cap>
+        <indirizzo>via nicolai 287</indirizzo>
         <data>2015-12-11</data>
         <ora>00:00:01.000</ora>
         <listaOperazioni>
@@ -135,32 +109,6 @@
             <id>107</id>
             <nome>Bbb</nome>
             <cognome>Ccc</cognome>
-        </infermiere>
-    </intervento>
-    <intervento>
-        <id>99</id>
-        <citta>Bari</citta>
-        <cap>12481</cap>
-        <indirizzo>via aaa 123</indirizzo>
-        <data>2015-12-11</data>
-        <ora>12:00:00.000</ora>
-        <listaOperazioni/>
-        <paziente>
-            <id>110</id>
-            <nome>l LL</nome>
-            <cognome>KKk</cognome>
-            <data>2002-12-12</data>
-            <rubrica>
-                <numero>124</numero>
-                <numero>1412</numero>
-                <numero>1214</numero>
-                <numero>32424</numero>
-            </rubrica>
-        </paziente>
-        <infermiere>
-            <id>110</id>
-            <nome>l LL</nome>
-            <cognome>KKk</cognome>
         </infermiere>
     </intervento>
 </pianificazione>

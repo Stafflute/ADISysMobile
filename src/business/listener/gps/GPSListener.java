@@ -9,6 +9,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+import business.applicationservice.ApplicationServiceRilevazione;
+import business.entity.GPS;
 
 public class GPSListener extends Service implements LocationListener {
 
@@ -24,7 +26,13 @@ public class GPSListener extends Service implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
-        Log.d("AndroidRuntime", "Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
+        GPS gps = new GPS();
+
+        gps.setLatitudine(location.getLatitude());
+        gps.setLongitudine(location.getLongitude());
+
+        ApplicationServiceRilevazione.addGPS(gps);
+        Log.i("AndroidRuntime", "Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
     }
 
     @Override
