@@ -79,5 +79,4 @@ public class SchermataPrincipale extends Activity implements Boundary {
         fileSpinner.setOnItemSelectedListener(fileSpinnerListener);
         fileConfirm.setOnClickListener(fileConfirmListener);
     }
-
 }
