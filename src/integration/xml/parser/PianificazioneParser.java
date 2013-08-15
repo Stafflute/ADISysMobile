@@ -1,11 +1,9 @@
-package util.xml.parser;
+package integration.xml.parser;
 
-import android.util.Log;
 import business.entity.*;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import org.xml.sax.SAXException;
-import pl.polidea.TreeXMLParser.XMLInternalNode;
 import pl.polidea.TreeXMLParser.XMLLeafNode;
 import pl.polidea.TreeXMLParser.XMLNode;
 import pl.polidea.TreeXMLParser.XMLParser;
@@ -92,7 +90,7 @@ public class PianificazioneParser {
     private static String getLeafNodeValue(XMLNode node, String tag) {
         List<XMLNode> nodeList = node.queryNode(tag).children;
         String result = null;
-        if(!nodeList.isEmpty()) {
+        if (!nodeList.isEmpty()) {
             XMLLeafNode leafNode = (XMLLeafNode) nodeList.get(FIRST);
             result = leafNode.value.toString();
         }

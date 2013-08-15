@@ -13,8 +13,8 @@ import android.util.Log;
 import business.applicationservice.exception.CommonException;
 import business.applicationservice.exception.NotValidatedPianificazioneFormatException;
 import business.applicationservice.exception.PianificazioneNotFoundException;
-import business.entity.Intervento;
 import business.entity.Pianificazione;
+import integration.xml.parser.PianificazioneParser;
 import mf.javax.xml.transform.stream.StreamSource;
 import mf.javax.xml.validation.Schema;
 import mf.javax.xml.validation.SchemaFactory;
@@ -23,7 +23,6 @@ import mf.org.apache.xerces.jaxp.validation.XMLSchemaFactory;
 import org.xml.sax.SAXException;
 import presentation.controller.ApplicationService;
 import util.*;
-import util.xml.parser.PianificazioneParser;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -37,12 +36,12 @@ public class ApplicationServicePianificazione implements ApplicationService {
 
     private static final String DATE_REGEX = "(([0-9])+[-]){2}([0-9])+";
     private static final String TIME_REGEX = "(([0-9])+[_]){2}([0-9])+([.]([0-9])+)?";
-    private static final String XML_EXTENSION= "xml";
-    private static final String FILE_SYNTAX_REGEX = "pianificazione[ ]"+DATE_REGEX+"T"+TIME_REGEX + "[.]" + XML_EXTENSION;
+    private static final String XML_EXTENSION = "xml";
+    private static final String FILE_SYNTAX_REGEX = "pianificazione[ ]" + DATE_REGEX + "T" + TIME_REGEX + "[.]" + XML_EXTENSION;
 
     private static final String ROOT_PATH = "adisysmobile";
     private static final String IMPORTAZIONE_PATH = "importazione";
-    private static final String CANONICAL_IMPORTAZIONE_PATH = ROOT_PATH + File.separator + IMPORTAZIONE_PATH ;
+    private static final String CANONICAL_IMPORTAZIONE_PATH = ROOT_PATH + File.separator + IMPORTAZIONE_PATH;
 
     private static final String XML_PIANIFICAZIONE_SCHEMA = "schema/XMLPianificazioneSchema.xsd";
 
@@ -60,23 +59,23 @@ public class ApplicationServicePianificazione implements ApplicationService {
     public List<PianificazioneFile> getFileList(Parameter parameter) {
         List<PianificazioneFile> fileListDetailed = null;
 
-        try{
-        FolderManager.insertFolderIfNotExists(AndroidPath.SD_PATH + ROOT_PATH);
-        FolderManager.insertFolderIfNotExists(AndroidPath.SD_PATH + CANONICAL_IMPORTAZIONE_PATH);
+        try {
+            FolderManager.insertFolderIfNotExists(AndroidPath.SD_PATH + ROOT_PATH);
+            FolderManager.insertFolderIfNotExists(AndroidPath.SD_PATH + CANONICAL_IMPORTAZIONE_PATH);
 
-        File folder = new File(AndroidPath.SD_PATH +CANONICAL_IMPORTAZIONE_PATH);
+            File folder = new File(AndroidPath.SD_PATH + CANONICAL_IMPORTAZIONE_PATH);
 
-        fileListDetailed = new ArrayList<>();
-        File[] fileList = folder.listFiles(filter);
+            fileListDetailed = new ArrayList<>();
+            File[] fileList = folder.listFiles(filter);
 
-        for(File file : fileList) {
-            String fileName = file.getName();
-            PianificazioneFile decoratedFileName = new PianificazioneFile(fileName);
+            for (File file : fileList) {
+                String fileName = file.getName();
+                PianificazioneFile decoratedFileName = new PianificazioneFile(fileName);
 
-            fileListDetailed.add(decoratedFileName);
-        }
+                fileListDetailed.add(decoratedFileName);
+            }
 
-        Collections.sort(fileListDetailed);
+            Collections.sort(fileListDetailed);
         } catch (Throwable e) {
             Log.e("AndroidRuntime", e.toString() + ": " + e.getLocalizedMessage(), e);
         }
@@ -102,7 +101,7 @@ public class ApplicationServicePianificazione implements ApplicationService {
     public Boolean checkValid(Parameter parameter) throws CommonException {
         PianificazioneFile fileDetailed = (PianificazioneFile) parameter.getValue("pianificazione");
 
-        if(fileDetailed == null) {
+        if (fileDetailed == null) {
             throw new PianificazioneNotFoundException();
         }
 

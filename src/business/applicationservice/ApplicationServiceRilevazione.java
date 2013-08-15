@@ -94,4 +94,6 @@ public class ApplicationServiceRilevazione implements ApplicationService {
         operazione.setValoreRilevato(valoreRilevato);
         Log.i("AndroidRuntime", "registered values at id " + operazioneList.get(position).getId() + " in " + tempoOperazione + " secs");
     }
+
+
 }
