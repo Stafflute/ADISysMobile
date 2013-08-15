@@ -19,6 +19,13 @@ public class AccelerometerListener extends Service implements SensorEventListene
     private static final int Y = 1;
     private static final int Z = 2;
 
+    private int x = 0;
+    private int y = 0;
+    private int z = 0;
+
+    private int count = 0;
+    private final static int MAX_COUNT = 60;
+
     private static final int SENSOR_DELAY_VERY_HIGH = 15 * 1000000;
 
     private SensorManager sensorManager;
@@ -63,18 +70,30 @@ public class AccelerometerListener extends Service implements SensorEventListene
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        Accelerometro accelerometro = new Accelerometro();
+        synchronized (this) {
+            x += event.values[X];
+            y += event.values[Y];
+            z += event.values[Z];
 
-        double x = event.values[X];
-        double y = event.values[Y];
-        double z = event.values[Z];
+            count++;
 
-        accelerometro.setX(x);
-        accelerometro.setY(y);
-        accelerometro.setZ(z);
+            if (count >= MAX_COUNT) {
+                Accelerometro accelerometro = new Accelerometro();
 
-        ApplicationServiceRilevazione.addAccelerometro(accelerometro);
-        Log.d("AndroidRuntime", "Accelerometer coords: " + accelerometro.toString());
+                accelerometro.setX(x / MAX_COUNT);
+                accelerometro.setY(y / MAX_COUNT);
+                accelerometro.setZ(z / MAX_COUNT);
+
+                x = 0;
+                y = 0;
+                z = 0;
+
+                count = 0;
+
+                ApplicationServiceRilevazione.addAccelerometro(accelerometro);
+                Log.d("AndroidRuntime", "Accelerometer coords: " + accelerometro.toString());
+            }
+        }
     }
 
     @Override

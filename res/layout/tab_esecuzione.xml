@@ -26,7 +26,7 @@
             <ListView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/listaOperazioni" android:clickable="true"/>
+                    android:id="@+id/listaOperazioni" android:clickable="false" android:alpha="0.5"/>
         </ScrollView>
     </LinearLayout>
 </merge>

@@ -32,7 +32,7 @@ public class ApplicationServiceRilevazione implements ApplicationService {
         GPS adressGPS = AdressParser.getCoordinates(intervento);
         gpsList.add(adressGPS);
 
-        Log.i("AndroidRuntime", "Parsered GPS: " + ((adressGPS != null) ? adressGPS : "null"));
+        Log.i("AndroidRuntime", "Parsered GPS geocoding: " + ((adressGPS != null) ? adressGPS : "null"));
 
         Activity activity = ApplicationServiceGeneral.activity;
         Intent intentGPS = new Intent(activity.getApplicationContext(), GPSListener.class);

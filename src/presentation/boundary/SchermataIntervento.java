@@ -109,28 +109,32 @@ public class SchermataIntervento extends Activity implements Boundary {
         cognomeInfermiereTextView.append(intervento.getInfermiere().getCognome());
     }
 
+    private ListView operazioneListView;
+
     private void initListViews(Intervento intervento) {
         List<Operazione> operazioneList = intervento.getOperazione();
-        ListView operazioneListView = (ListView) findViewById(R.id.listaOperazioni);
+        operazioneListView = (ListView) findViewById(R.id.listaOperazioni);
         operazioneListView.setOnItemClickListener(operazioneClickListener);
 
         ArrayAdapter<Operazione> operazioneArrayAdapter = new ArrayAdapter<>(this, R.layout.simple_text, operazioneList);
         operazioneListView.setAdapter(operazioneArrayAdapter);
 
         List<String> rubrica = intervento.getPaziente().getNumeroCellulare();
-        LinearLayout rubricaListView = (LinearLayout) findViewById(R.id.rubricaList);
+        LinearLayout rubricaLinearLayout = (LinearLayout) findViewById(R.id.rubricaList);
 
         for (String numero : rubrica) {
             TextView textView = (TextView) View.inflate(this, R.layout.rubrica_text, null);
             textView.setText(LIST_POINT + numero);
-            rubricaListView.addView(textView);
+            rubricaLinearLayout.addView(textView);
         }
     }
 
     private AdapterView.OnItemClickListener operazioneClickListener = new AdapterView.OnItemClickListener() {
 
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            fc.processRequest("MostraSchermataOperazione", null);
+            if (!isExecutable) {
+                fc.processRequest("MostraSchermataOperazione", null);
+            }
         }
     };
 
@@ -140,6 +144,10 @@ public class SchermataIntervento extends Activity implements Boundary {
     }
 
     private boolean isExecutable = true;
+    private Button executeButton;
+
+    private static final float OPAQUE = 1;
+    private static final float TRANSPARENT = 0.5f;
 
     private View.OnClickListener executeInterventoListener = new View.OnClickListener() {
 
@@ -148,6 +156,9 @@ public class SchermataIntervento extends Activity implements Boundary {
             synchronized (this) {
                 if (isExecutable) {
                     isExecutable = false;
+                    operazioneListView.setClickable(true);
+                    operazioneListView.setAlpha(1);
+                    executeButton.setVisibility(View.GONE);
                     fc.processRequest("EseguiIntervento", parameter);
                 }
             }
@@ -155,7 +166,7 @@ public class SchermataIntervento extends Activity implements Boundary {
     };
 
     private void initButtons() {
-        Button executeButton = (Button) findViewById(R.id.eseguiIntervento);
+        executeButton = (Button) findViewById(R.id.eseguiIntervento);
         executeButton.setOnClickListener(executeInterventoListener);
     }
 }
