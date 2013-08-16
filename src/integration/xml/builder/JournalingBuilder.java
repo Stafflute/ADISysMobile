@@ -12,7 +12,7 @@ import java.io.File;
  * To change this template use File | Settings | File Templates.
  */
 public class JournalingBuilder {
-    public static void buildJournaling(File journaling, InterventoCompleto interventoCompleto) {
+    public static void fillInterventoCompleto(File journaling, InterventoCompleto interventoCompleto) {
 
     }
 }
