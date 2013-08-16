@@ -216,6 +216,10 @@ public class SchermataIntervento extends Activity implements Boundary {
                     Intent returnIntent = new Intent();
                     setResult(RESULT_OK, returnIntent);
 
+                    String message = getResources().getString(R.string.intervention_finished_successfully);
+                    Toast toastMessage = Toast.makeText(context, message, Toast.LENGTH_SHORT);
+                    toastMessage.show();
+
                     SchermataIntervento.this.finish();
                 }
             }
