@@ -3,16 +3,16 @@
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-        >
+              android:paddingTop="10dp" android:paddingLeft="10dp">
     <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/select_file"
-            android:textSize="24dp"/>
+            android:textSize="24dp" android:paddingBottom="6dp"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content" android:paddingTop="12dp">
         <Space
                 android:layout_width="39dp"
                 android:layout_height="20px"
@@ -23,14 +23,15 @@
                 android:id="@+id/spinner" android:layout_gravity="left|center_vertical"
                 />
     </LinearLayout>
-    <Space
-            android:layout_width="20px"
-            android:layout_height="20px"
-            android:id="@+id/space" android:layout_gravity="left|center_vertical"/>
-    <Button
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="@string/ok"
-            android:id="@+id/fileConfirm" android:layout_gravity="center" android:singleLine="false"/>
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:paddingBottom="20dp">
+        <Button
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/ok"
+                android:id="@+id/fileConfirm" android:layout_gravity="center" android:singleLine="false"
+                android:layout_centerHorizontal="true" android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
 </LinearLayout>
 
