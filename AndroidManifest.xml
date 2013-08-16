@@ -19,7 +19,7 @@
         <activity android:name="presentation.boundary.SchermataPianificazione"/>
         <activity android:name="presentation.boundary.SchermataIntervento"/>
         <activity android:name="presentation.boundary.SchermataOperazione"/>
-        <service android:name="business.listener.gps.GPSListener"/>
-        <service android:name="business.listener.accelerometer.AccelerometerListener"/>
+        <service android:name="integration.listener.gps.GPSListener"/>
+        <service android:name="integration.listener.accelerometer.AccelerometerListener"/>
     </application>
 </manifest>

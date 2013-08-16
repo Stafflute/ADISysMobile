@@ -1,4 +1,4 @@
-package business.listener.accelerometer;
+package integration.listener.accelerometer;
 
 import android.app.Activity;
 import android.app.Service;
