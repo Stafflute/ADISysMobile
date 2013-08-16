@@ -95,5 +95,14 @@ public class ApplicationServiceRilevazione implements ApplicationService {
         Log.i("AndroidRuntime", "registered values at id " + operazioneList.get(position).getId() + " in " + tempoOperazione + " secs");
     }
 
+    public synchronized void finishIntervento(Parameter parameter) throws NotStartedServiceException {
+        InterventoCompleto interventoCompletoResult = interventoCompleto;
+        interventoCompletoResult.setGps(gpsList);
+        interventoCompletoResult.setAccelerometro(accelerometroList);
+        interventoCompletoResult.setOperazione(operazioneList);
 
+        stopReceiving(null);
+
+
+    }
 }
