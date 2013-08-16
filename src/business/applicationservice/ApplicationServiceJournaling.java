@@ -45,7 +45,7 @@ public class ApplicationServiceJournaling implements ApplicationService {
 
         boolean validated = false;
         if (fileExists) {
-            if (toValidate = true) {
+            if (toValidate) {
                 validated = Validator.validate(journalingFile, XML_JOURNALING_SCHEMA);
             } else {
                 validated = true;

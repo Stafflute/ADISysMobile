@@ -1,6 +1,7 @@
 package integration.xml.builder;
 
 import business.entity.*;
+import org.joda.time.LocalTime;
 import org.xml.sax.SAXException;
 import pl.polidea.TreeXMLParser.XMLInternalNode;
 import pl.polidea.TreeXMLParser.XMLLeafNode;
@@ -47,13 +48,13 @@ public class JournalingBuilder {
     public static void fillInterventoCompleto(File journaling, InterventoCompleto interventoCompleto) {
         XMLParser parser = new XMLParser();
         try {
-            PrintWriter fileWriter = new PrintWriter(journaling);
-
             XMLNode root = parser.parse(new FileInputStream(journaling));
             XMLInternalNode journalingNode = (XMLInternalNode) root.children.get(FIRST);
             root.children.set(FIRST, serialize(journalingNode, interventoCompleto));
 
-            fileWriter.print(root.generateXML());
+            PrintWriter fileWriter = new PrintWriter(journaling);
+            String rawFormattedXML = root.generateXML();
+            fileWriter.print(rawFormattedXML);
             fileWriter.close();
         } catch (SAXException e) {
             ErrorPrinter.print(e);
@@ -136,8 +137,13 @@ public class JournalingBuilder {
 
             ValoreRilevato valoreRilevato = operazione.getValoreRilevato();
             Map<String, String> valoreRilevatoAttributes = new HashMap<>();
-            valoreRilevatoAttributes.put("tempoOperazione", valoreRilevato.getTempoOperazione().toString());
-            appendSimpleElement(operazioneNode, "valoreRilevato", valoreRilevato.getMisura(), valoreRilevatoAttributes);
+            if (valoreRilevato != null) {
+                valoreRilevatoAttributes.put("tempoOperazione", valoreRilevato.getTempoOperazione().toString());
+                appendSimpleElement(operazioneNode, "valoreRilevato", valoreRilevato.getMisura(), valoreRilevatoAttributes);
+            } else {
+                valoreRilevatoAttributes.put("tempoOperazione", (new LocalTime(0)).toString());
+                appendSimpleElement(operazioneNode, "valoreRilevato", "", valoreRilevatoAttributes);
+            }
 
             operazioneListNode.add(operazioneNode);
         }
@@ -159,9 +165,11 @@ public class JournalingBuilder {
         XMLInternalNode rubricaNode = new XMLInternalNode(pazienteNode, "rubrica", null);
         appendElement(pazienteNode, rubricaNode);
 
-        List<XMLNode> numeroNodeList = new LinkedList<>();
-        for (String numero : paziente.getNumeroCellulare()) {
-            appendSimpleElement(rubricaNode, "numero", numero);
+        if (paziente.getNumeroCellulare() != null) {
+            List<XMLNode> numeroNodeList = new LinkedList<>();
+            for (String numero : paziente.getNumeroCellulare()) {
+                appendSimpleElement(rubricaNode, "numero", numero);
+            }
         }
     }
 

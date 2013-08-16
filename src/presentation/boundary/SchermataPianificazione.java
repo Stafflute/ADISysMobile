@@ -16,6 +16,7 @@ import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
 import util.Parameter;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -31,10 +32,13 @@ public class SchermataPianificazione extends Activity implements Boundary {
     private AdapterView.OnItemClickListener interventoClickListener = new AdapterView.OnItemClickListener() {
 
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Parameter parameter = new Parameter();
-            parameter.setValue(ACTIVITY, activity);
-            parameter.setValue("intervento", pianificazione.getIntervento().get(position));
-            fc.processRequest("MostraSchermataIntervento", parameter);
+            String selectedIntervento = pianificazione.getIntervento().get(position).getId();
+            if (!idSet.contains(selectedIntervento)) {
+                Parameter parameter = new Parameter();
+                parameter.setValue(ACTIVITY, activity);
+                parameter.setValue("intervento", pianificazione.getIntervento().get(position));
+                fc.processRequest("MostraSchermataIntervento", parameter);
+            }
         }
     };
 
@@ -67,11 +71,13 @@ public class SchermataPianificazione extends Activity implements Boundary {
 
     private void refreshPianificazione() {
         parameter.setValue("validazione", toValidate);
-        Set<String> idSet = (Set<String>) fc.processRequest("LeggiFileJournaling", parameter);
+        idSet = (Set<String>) fc.processRequest("LeggiFileJournaling", parameter);
         listaIntAdapter.setIdSet(idSet);
         listaInterventiView.setAdapter(listaIntAdapter);
         toValidate = false;
     }
+
+    Set<String> idSet = new HashSet<>();
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -81,7 +87,7 @@ public class SchermataPianificazione extends Activity implements Boundary {
             if (resultCode == RESULT_OK) {
                 listaInterventiView.setClickable(false);
                 parameter.setValue("validazione", toValidate);
-                Set<String> idSet = (Set<String>) fc.processRequest("LeggiFileJournaling", parameter);
+                idSet = (Set<String>) fc.processRequest("LeggiFileJournaling", parameter);
                 listaIntAdapter.setIdSet(idSet);
                 listaInterventiView.setAdapter(listaIntAdapter);
                 listaInterventiView.setClickable(true);
@@ -101,14 +107,17 @@ class SelectiveInterventoArrayAdapter extends ArrayAdapter<Intervento> {
     List<Intervento> objects;
     private Set<String> idSet;
 
+    private static final float TRANSPARENT = 0.5f;
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = null;
+        View view = super.getView(position, convertView, parent);
 
         String id = objects.get(position).getId();
 
-        if (!idSet.contains(id)) {
-            view = super.getView(position, convertView, parent);
+        if (idSet.contains(id)) {
+            view.setClickable(false);
+            view.setAlpha(TRANSPARENT);
         }
 
         return view;

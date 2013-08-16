@@ -95,6 +95,10 @@ public class ApplicationServiceRilevazione implements ApplicationService {
         valoreRilevato.setTempoOperazione(tempoOperazione);
 
         operazione.setValoreRilevato(valoreRilevato);
+
+        //operazioneList.remove(position);
+        //operazioneList.add(position, operazione);
+
         Log.i("AndroidRuntime", "registered values at id " + operazioneList.get(position).getId() + " in " + tempoOperazione + " secs");
     }
 
@@ -105,6 +109,8 @@ public class ApplicationServiceRilevazione implements ApplicationService {
         interventoCompletoResult.setOperazione(operazioneList);
 
         stopReceiving(null);
+
+        Log.d("AndroidRuntime", journalingFile.toString());
 
         JournalingBuilder.fillInterventoCompleto(journalingFile, interventoCompletoResult);
     }
