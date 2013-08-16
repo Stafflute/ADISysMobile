@@ -230,6 +230,7 @@ public class SchermataIntervento extends Activity implements Boundary {
         abortButton = (Button) findViewById(R.id.annullaIntervento);
 
         abortButton.setOnClickListener(abortInterventoListener);
+        finishButton.setOnClickListener(finishInterventoListener);
     }
 
 }

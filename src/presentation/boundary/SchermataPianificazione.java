@@ -79,12 +79,12 @@ public class SchermataPianificazione extends Activity implements Boundary {
         if (requestCode == DEFAULT_REQUEST) {
 
             if (resultCode == RESULT_OK) {
-
+                listaInterventiView.setClickable(false);
                 parameter.setValue("validazione", toValidate);
                 Set<String> idSet = (Set<String>) fc.processRequest("LeggiFileJournaling", parameter);
                 listaIntAdapter.setIdSet(idSet);
                 listaInterventiView.setAdapter(listaIntAdapter);
-
+                listaInterventiView.setClickable(true);
             }
         }
     }
