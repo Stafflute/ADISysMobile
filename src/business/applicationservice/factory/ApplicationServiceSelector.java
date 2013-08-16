@@ -8,8 +8,6 @@ class ApplicationServiceSelector {
     private static ApplicationServiceMap asMap = new ApplicationServiceHashMap();
 
     static {
-        //TODO be implemented
-        //TODO operation to implement create dirs and load list files
         asMap.selectApplicationServiceBy("ElencaPianificazioni");
         asMap.setApplicationServiceValues("ApplicationServicePianificazione", "getFileList");
 
@@ -30,6 +28,12 @@ class ApplicationServiceSelector {
 
         asMap.selectApplicationServiceBy("RegistraValori");
         asMap.setApplicationServiceValues("ApplicationServiceRilevazione", "registerValues");
+
+        asMap.selectApplicationServiceBy("LeggiFileJournaling");
+        asMap.setApplicationServiceValues("ApplicationServiceJournaling", "readJournalingFile");
+
+        asMap.selectApplicationServiceBy("FinisciIntervento");
+        asMap.setApplicationServiceValues("ApplicationServiceRilevazione", "completeIntervento");
     }
 
     private ApplicationServiceSelector() {

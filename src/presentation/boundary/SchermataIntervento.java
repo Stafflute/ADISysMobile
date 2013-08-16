@@ -2,6 +2,7 @@ package presentation.boundary;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -160,12 +161,14 @@ public class SchermataIntervento extends Activity implements Boundary {
     private static final float OPAQUE = 1;
     private static final float TRANSPARENT = 0.5f;
 
+    private boolean isNotFinished = true;
+
     private View.OnClickListener executeInterventoListener = new View.OnClickListener() {
 
         @Override
         public void onClick(View v) {
             synchronized (this) {
-                if (isExecutable) {
+                if (isExecutable && isNotFinished) {
                     isExecutable = false;
                     operazioneListView.setClickable(true);
                     operazioneListView.setAlpha(OPAQUE);
@@ -183,7 +186,7 @@ public class SchermataIntervento extends Activity implements Boundary {
         @Override
         public void onClick(View v) {
             synchronized (this) {
-                if (!isExecutable) {
+                if (!isExecutable && isNotFinished) {
                     isExecutable = true;
                     operazioneListView.setClickable(false);
                     operazioneListView.setAlpha(TRANSPARENT);
@@ -193,6 +196,27 @@ public class SchermataIntervento extends Activity implements Boundary {
                     operazioneArrayAdapter.resetAll();
                     operazioneListView.setAdapter(operazioneArrayAdapter);
                     fc.processRequest("InterrompiEsecuzione", null);
+                }
+            }
+        }
+    };
+
+    private View.OnClickListener finishInterventoListener = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            synchronized (this) {
+                if (!isExecutable && isNotFinished) {
+                    isNotFinished = false;
+                    operazioneListView.setClickable(false);
+
+                    operazioneListView.setAdapter(operazioneArrayAdapter);
+                    fc.processRequest("FinisciIntervento", null);
+
+                    Intent returnIntent = new Intent();
+                    setResult(RESULT_OK, returnIntent);
+
+                    SchermataIntervento.this.finish();
                 }
             }
         }

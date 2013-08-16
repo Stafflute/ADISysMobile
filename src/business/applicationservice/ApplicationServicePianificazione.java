@@ -8,26 +8,18 @@ package business.applicationservice;
  * To change this template use File | Settings | File Templates.
  */
 
-import android.content.res.AssetManager;
 import android.util.Log;
 import business.applicationservice.exception.CommonException;
 import business.applicationservice.exception.NotValidatedPianificazioneFormatException;
 import business.applicationservice.exception.PianificazioneNotFoundException;
 import business.entity.Pianificazione;
 import integration.xml.parser.PianificazioneParser;
-import mf.javax.xml.transform.stream.StreamSource;
-import mf.javax.xml.validation.Schema;
-import mf.javax.xml.validation.SchemaFactory;
-import mf.javax.xml.validation.Validator;
-import mf.org.apache.xerces.jaxp.validation.XMLSchemaFactory;
-import org.xml.sax.SAXException;
+import integration.xml.validator.Validator;
 import presentation.controller.ApplicationService;
 import util.*;
 
 import java.io.File;
 import java.io.FileFilter;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -107,21 +99,12 @@ public class ApplicationServicePianificazione implements ApplicationService {
 
         File file = fileDetailed.getFile();
 
-        Boolean valid = false;
-        AssetManager assetManager = ApplicationServiceGeneral.activity.getAssets();
-        SchemaFactory schemaFactory = new XMLSchemaFactory();
+        Boolean valid = Validator.validate(file, XML_PIANIFICAZIONE_SCHEMA);
 
-        try {
-            InputStream inputStream = assetManager.open(XML_PIANIFICAZIONE_SCHEMA);
-            Schema schema = schemaFactory.newSchema(new StreamSource(inputStream));
-            Validator validator = schema.newValidator();
-            validator.validate(new StreamSource(file));
-            valid = true;
-        } catch (SAXException e) {
-            throw new NotValidatedPianificazioneFormatException(e.getMessage());
-        } catch (IOException e) {
-            ErrorPrinter.print(e);
+        if (!valid) {
+            throw new NotValidatedPianificazioneFormatException();
         }
+
         return valid;
     }
 }

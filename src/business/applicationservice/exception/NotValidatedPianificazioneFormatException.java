@@ -1,7 +1,6 @@
 package business.applicationservice.exception;
 
 import business.applicationservice.ErrorToastDialog;
-import business.applicationservice.exception.CommonException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,6 +12,9 @@ import business.applicationservice.exception.CommonException;
 public class NotValidatedPianificazioneFormatException extends CommonException {
     public NotValidatedPianificazioneFormatException(String message) {
         super();
+    }
+
+    public NotValidatedPianificazioneFormatException() {
     }
 
     @Override

@@ -2,8 +2,10 @@ package presentation.boundary;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -13,6 +15,9 @@ import com.adisys.R;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
 import util.Parameter;
+
+import java.util.List;
+import java.util.Set;
 
 public class SchermataPianificazione extends Activity implements Boundary {
 
@@ -41,6 +46,9 @@ public class SchermataPianificazione extends Activity implements Boundary {
         Intervento.pazienteLabel = context.getString(R.string.patient);
     }
 
+    SelectiveInterventoArrayAdapter listaIntAdapter;
+    ListView listaInterventiView;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_pianificazione);
@@ -48,9 +56,65 @@ public class SchermataPianificazione extends Activity implements Boundary {
 
         pianificazione = (Pianificazione) fc.processRequest("ElencaInterventi", parameter);
 
-        ListView listaInterventiView = (ListView) findViewById(R.id.listaInterventi);
-        ArrayAdapter<Intervento> listaIntAdapter = new ArrayAdapter<>(this, R.layout.simple_text, pianificazione.getIntervento());
-        listaInterventiView.setAdapter(listaIntAdapter);
+        listaInterventiView = (ListView) findViewById(R.id.listaInterventi);
+        listaIntAdapter = new SelectiveInterventoArrayAdapter(this, R.layout.simple_text, pianificazione.getIntervento());
         listaInterventiView.setOnItemClickListener(interventoClickListener);
+
+        refreshPianificazione();
+    }
+
+    private boolean toValidate = true;
+
+    private void refreshPianificazione() {
+        parameter.setValue("validazione", toValidate);
+        Set<String> idSet = (Set<String>) fc.processRequest("LeggiFileJournaling", parameter);
+        listaIntAdapter.setIdSet(idSet);
+        listaInterventiView.setAdapter(listaIntAdapter);
+        toValidate = false;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == DEFAULT_REQUEST) {
+
+            if (resultCode == RESULT_OK) {
+
+                parameter.setValue("validazione", toValidate);
+                Set<String> idSet = (Set<String>) fc.processRequest("LeggiFileJournaling", parameter);
+                listaIntAdapter.setIdSet(idSet);
+                listaInterventiView.setAdapter(listaIntAdapter);
+
+            }
+        }
+    }
+}
+
+class SelectiveInterventoArrayAdapter extends ArrayAdapter<Intervento> {
+
+    public SelectiveInterventoArrayAdapter(Context context, int textViewResourceId, List<Intervento> objects) {
+        super(context, textViewResourceId, objects);
+
+        this.objects = objects;
+    }
+
+    List<Intervento> objects;
+    private Set<String> idSet;
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View view = null;
+
+        String id = objects.get(position).getId();
+
+        if (!idSet.contains(id)) {
+            view = super.getView(position, convertView, parent);
+        }
+
+        return view;
+    }
+
+    public void setIdSet(Set<String> idSet) {
+        this.idSet = idSet;
     }
 }

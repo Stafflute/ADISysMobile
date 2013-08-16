@@ -27,7 +27,7 @@ public class ApplicationServiceBoundary implements ApplicationService {
                 parameter.removeNotSerializable();
             }
             intent.putExtra(Parameter.PARAMETER, parameter);
-            activity.startActivityForResult(intent, Boundary.RESULT);
+            activity.startActivityForResult(intent, Boundary.DEFAULT_REQUEST);
         } catch (ClassNotFoundException e) {
             ErrorPrinter.print(e);
         }

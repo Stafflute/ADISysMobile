@@ -9,10 +9,12 @@ import business.entity.*;
 import integration.listener.accelerometer.AccelerometerListener;
 import integration.listener.gps.AdressParser;
 import integration.listener.gps.GPSListener;
+import integration.xml.builder.JournalingBuilder;
 import org.joda.time.LocalTime;
 import presentation.controller.ApplicationService;
 import util.Parameter;
 
+import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,6 +25,7 @@ public class ApplicationServiceRilevazione implements ApplicationService {
     private static List<Operazione> operazioneList;
     private static List<GPS> gpsList = new LinkedList<>();
     private static List<Accelerometro> accelerometroList = new LinkedList<>();
+    private static File journalingFile;
 
     public synchronized void startReceiving(Parameter parameter) throws NotStartedServiceException {
         gpsList = new LinkedList<>();
@@ -95,7 +98,7 @@ public class ApplicationServiceRilevazione implements ApplicationService {
         Log.i("AndroidRuntime", "registered values at id " + operazioneList.get(position).getId() + " in " + tempoOperazione + " secs");
     }
 
-    public synchronized void finishIntervento(Parameter parameter) throws NotStartedServiceException {
+    public synchronized void completeIntervento(Parameter parameter) throws NotStartedServiceException {
         InterventoCompleto interventoCompletoResult = interventoCompleto;
         interventoCompletoResult.setGps(gpsList);
         interventoCompletoResult.setAccelerometro(accelerometroList);
@@ -103,6 +106,10 @@ public class ApplicationServiceRilevazione implements ApplicationService {
 
         stopReceiving(null);
 
+        JournalingBuilder.fillInterventoCompleto(journalingFile, interventoCompletoResult);
+    }
 
+    static synchronized void setJournalingFile(File journalingFileToInsert) {
+        journalingFile = journalingFileToInsert;
     }
 }

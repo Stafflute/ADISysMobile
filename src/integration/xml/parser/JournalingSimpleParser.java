@@ -1,6 +1,5 @@
 package integration.xml.parser;
 
-import business.entity.InterventoCompleto;
 import org.xml.sax.SAXException;
 import pl.polidea.TreeXMLParser.XMLLeafNode;
 import pl.polidea.TreeXMLParser.XMLNode;
@@ -11,19 +10,20 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class JournalingSimpleParser {
 
     public static final int FIRST = 0;
 
-    public static List<InterventoCompleto> parse(File file) {
-        List<InterventoCompleto> pianificazione = null;
+    public static Set<String> parse(File file) {
+        Set<String> idSet = null;
         XMLParser parser = new XMLParser();
         try {
             XMLNode root = parser.parse(new FileInputStream(file));
-            pianificazione = deserialize(root);
+            idSet = deserialize(root);
         } catch (SAXException e) {
             ErrorPrinter.print(e);
         } catch (ParserConfigurationException e) {
@@ -31,23 +31,20 @@ public class JournalingSimpleParser {
         } catch (IOException e) {
             ErrorPrinter.print(e);
         }
-        return pianificazione;
+        return idSet;
     }
 
-    private static List<InterventoCompleto> deserialize(XMLNode root) {
-        List<InterventoCompleto> listaInterventi = new ArrayList<>();
+    private static Set<String> deserialize(XMLNode root) {
+        Set<String> idSet = new HashSet<>();
 
         List<XMLNode> nodeList = root.children.get(FIRST).queryNodes("intervento");
         for (XMLNode node : nodeList) {
-            InterventoCompleto intervento = new InterventoCompleto();
-
             String id = getLeafNodeValue(node, "id");
-            intervento.setId(id);
 
-            listaInterventi.add(intervento);
+            idSet.add(id);
         }
 
-        return listaInterventi;
+        return idSet;
     }
 
     private static String getLeafNodeValue(XMLNode node, String tag) {

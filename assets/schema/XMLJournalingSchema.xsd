@@ -101,9 +101,9 @@
             <xs:element type="xs:string" name="x"/>
             <xs:element type="xs:string" name="y"/>
             <xs:element type="xs:string" name="z"/>
+            <xs:element type="Date" name="data"/>
+            <xs:element type="Time" name="ora"/>
         </xs:sequence>
-        <xs:attribute type="Date" name="data"/>
-        <xs:attribute type="Time" name="ora"/>
     </xs:complexType>
 
     <xs:simpleType name="Date">
