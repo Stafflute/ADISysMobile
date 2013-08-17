@@ -91,7 +91,11 @@
             <operazione>
                 <id>175</id>
                 <nome>Fai SQL Injection</nome>
-                <nota>' SELECT FROM</nota>
+                <nota>
+                    ' SELECT FROM
+                    ssddfsfsdf
+                    sfdfseggg
+                </nota>
             </operazione>
         </listaOperazioni>
         <paziente>
