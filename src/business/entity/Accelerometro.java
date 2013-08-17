@@ -9,7 +9,8 @@ import org.joda.time.LocalDateTime;
  * Time: 01:14
  * To change this template use File | Settings | File Templates.
  */
-public class Accelerometro {
+public class Accelerometro implements Entity {
+    private static final long serialVersionUID = -5064182844412366320L;
     private double x;
     private double y;
     private double z;
