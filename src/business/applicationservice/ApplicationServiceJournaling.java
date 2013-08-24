@@ -1,6 +1,7 @@
 package business.applicationservice;
 
 import android.util.Log;
+import business.applicationservice.transfer.PianificazioneFile;
 import integration.xml.builder.JournalingBuilder;
 import integration.xml.parser.JournalingSimpleParser;
 import integration.xml.validator.Validator;
@@ -10,7 +11,6 @@ import presentation.controller.ApplicationService;
 import util.AndroidPath;
 import util.FolderManager;
 import util.Parameter;
-import util.PianificazioneFile;
 
 import java.io.File;
 import java.util.HashSet;

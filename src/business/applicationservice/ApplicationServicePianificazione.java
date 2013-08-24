@@ -12,11 +12,15 @@ import android.util.Log;
 import business.applicationservice.exception.CommonException;
 import business.applicationservice.exception.NotValidatedPianificazioneFormatException;
 import business.applicationservice.exception.PianificazioneNotFoundException;
+import business.applicationservice.transfer.PianificazioneFile;
 import business.entity.Pianificazione;
 import integration.xml.parser.PianificazioneParser;
 import integration.xml.validator.Validator;
 import presentation.controller.ApplicationService;
-import util.*;
+import util.AndroidPath;
+import util.ErrorPrinter;
+import util.FolderManager;
+import util.Parameter;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -27,9 +31,8 @@ import java.util.List;
 public class ApplicationServicePianificazione implements ApplicationService {
 
     private static final String DATE_REGEX = "(([0-9])+[-]){2}([0-9])+";
-    private static final String TIME_REGEX = "(([0-9])+[_]){2}([0-9])+([.]([0-9])+)?";
     private static final String XML_EXTENSION = "xml";
-    private static final String FILE_SYNTAX_REGEX = "pianificazione[ ]" + DATE_REGEX + "T" + TIME_REGEX + "[.]" + XML_EXTENSION;
+    private static final String FILE_SYNTAX_REGEX = "pianificazione[ ]" + "([a-zA-Z ])*[ ]" + DATE_REGEX + "[.]" + XML_EXTENSION;
 
     private static final String ROOT_PATH = "adisysmobile";
     private static final String IMPORTAZIONE_PATH = "importazione";

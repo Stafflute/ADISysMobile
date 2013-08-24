@@ -10,11 +10,11 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import business.applicationservice.transfer.PianificazioneFile;
 import com.adisys.R;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
 import util.Parameter;
-import util.PianificazioneFile;
 
 import java.util.ArrayList;
 import java.util.List;
