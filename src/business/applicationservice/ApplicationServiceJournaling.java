@@ -35,9 +35,9 @@ public class ApplicationServiceJournaling implements ApplicationService {
 
         Set<String> idSet = new HashSet<>();
 
-        String dateTimeString = pianificazioneFile.getDateTime().toString(FILE_TIME_FORMAT);
+        String dateString = pianificazioneFile.getDate().toString();
 
-        String journalingFileName = JOURNALING_HEADER + dateTimeString + COMPLETE_EXTENSION;
+        String journalingFileName = JOURNALING_HEADER + pianificazioneFile.getInfermiereName() + dateString + COMPLETE_EXTENSION;
 
         File journalingFile = new File(JOURNALING_PATH + journalingFileName);
 

@@ -32,7 +32,7 @@ public class ApplicationServicePianificazione implements ApplicationService {
 
     private static final String DATE_REGEX = "(([0-9])+[-]){2}([0-9])+";
     private static final String XML_EXTENSION = "xml";
-    private static final String FILE_SYNTAX_REGEX = "pianificazione[ ]" + "([a-zA-Z ])*[ ]" + DATE_REGEX + "[.]" + XML_EXTENSION;
+    private static final String FILE_SYNTAX_REGEX = "pianificazione[ ]" + "([a-zA-Z ])+[ ]" + DATE_REGEX + "[.]" + XML_EXTENSION;
 
     private static final String ROOT_PATH = "adisysmobile";
     private static final String IMPORTAZIONE_PATH = "importazione";
@@ -45,7 +45,6 @@ public class ApplicationServicePianificazione implements ApplicationService {
         public boolean accept(File pathname) {
             String fileName = pathname.getName();
 
-            //Log.d("AndroidRuntime" , fileName);
             return fileName.matches(FILE_SYNTAX_REGEX);
         }
     };

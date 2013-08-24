@@ -24,7 +24,7 @@ public class PianificazioneFile implements Serializable, Comparable<Pianificazio
     private static final transient String FOOTER_REGEX = DATE_REGEX_STRING + XML_EXTENSION_REGEX;
 
     private static final transient Pattern DATE_REGEX = Pattern.compile(DATE_REGEX_STRING);
-    private static final transient int FIRST_SUBGROUP = 1;
+    private static final transient int FIRST_SUBGROUP = 0;
 
     private String fileName;
     private LocalDate date;
@@ -34,20 +34,20 @@ public class PianificazioneFile implements Serializable, Comparable<Pianificazio
     public PianificazioneFile(String fileName) {
         this.fileName = fileName;
 
-        String dateTimeString = null;
+        String dateString = null;
         Matcher matcher = DATE_REGEX.matcher(fileName);
         while (matcher.find()) {
-            dateTimeString = matcher.group(FIRST_SUBGROUP);
+            dateString = matcher.group(FIRST_SUBGROUP);
         }
 
         infermiereName = fileName.replaceFirst(FILE_HEADER_REGEX, "");
         infermiereName = infermiereName.replaceFirst(FOOTER_REGEX, "");
 
-        date = LocalDate.parse(dateTimeString);
+        date = LocalDate.parse(dateString);
         file = new File(PIANIFICAZIONE_PATH + fileName);
     }
 
-    public LocalDate getDateTime() {
+    public LocalDate getDate() {
         return date;
     }
 
@@ -65,7 +65,7 @@ public class PianificazioneFile implements Serializable, Comparable<Pianificazio
 
     @Override
     public int compareTo(PianificazioneFile another) {
-        LocalDate anotherDateTime = another.getDateTime();
+        LocalDate anotherDateTime = another.getDate();
         return date.compareTo(anotherDateTime);
 
     }
