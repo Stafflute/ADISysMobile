@@ -20,7 +20,7 @@ public class ApplicationServiceJournaling implements ApplicationService {
 
     private final static transient String JOURNALING_PATH = AndroidPath.SD_PATH + "adisysmobile/esportazione/";
     private static final String XML_JOURNALING_SCHEMA = "schema/XMLJournalingSchema.xsd";
-    private static final String JOURNALING_HEADER = "Journaling ";
+    private static final String JOURNALING_HEADER = "journaling ";
     private static final String XML_EXTENSION = "xml";
     private static final String EXTENSION_START = ".";
     private static final String COMPLETE_EXTENSION = EXTENSION_START + XML_EXTENSION;

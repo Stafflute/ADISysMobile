@@ -21,7 +21,7 @@ public class PianificazioneFile implements Serializable, Comparable<Pianificazio
     private final static transient String PIANIFICAZIONE_PATH = AndroidPath.SD_PATH + "adisysmobile/importazione/";
     private static final transient String DATE_REGEX_STRING = "(([0-9])+[-]){2}([0-9])+";
 
-    private static final transient String FOOTER_REGEX = DATE_REGEX_STRING + XML_EXTENSION_REGEX;
+    private static final transient String FOOTER_REGEX = " " + DATE_REGEX_STRING + XML_EXTENSION_REGEX;
 
     private static final transient Pattern DATE_REGEX = Pattern.compile(DATE_REGEX_STRING);
     private static final transient int FIRST_SUBGROUP = 0;
