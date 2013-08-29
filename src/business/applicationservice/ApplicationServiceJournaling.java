@@ -23,6 +23,7 @@ public class ApplicationServiceJournaling implements ApplicationService {
     private static final String JOURNALING_HEADER = "journaling ";
     private static final String XML_EXTENSION = "xml";
     private static final String EXTENSION_START = ".";
+    private static final String SPACE = " ";
     private static final String COMPLETE_EXTENSION = EXTENSION_START + XML_EXTENSION;
     private static final DateTimeFormatter FILE_TIME_FORMAT = DateTimeFormat.forPattern("yyyy'-'MM'-'dd'T'HH'_'mm'_'ss'.'SSS");
 
@@ -37,7 +38,7 @@ public class ApplicationServiceJournaling implements ApplicationService {
 
         String dateString = pianificazioneFile.getDate().toString();
 
-        String journalingFileName = JOURNALING_HEADER + pianificazioneFile.getInfermiereName() + dateString + COMPLETE_EXTENSION;
+        String journalingFileName = JOURNALING_HEADER + pianificazioneFile.getInfermiereName() + SPACE + dateString + COMPLETE_EXTENSION;
 
         File journalingFile = new File(JOURNALING_PATH + journalingFileName);
 
