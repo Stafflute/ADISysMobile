@@ -3,14 +3,19 @@ package presentation.boundary;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.view.View;
 import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import business.entity.Operazione;
+import business.entity.Patologia;
 import com.adisys.R;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
 import util.Parameter;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -41,6 +46,15 @@ public class SchermataOperazione extends Activity {
         operazione = (Operazione) parameter.getValue("operazione");
 
         initText();
+
+        List<Patologia> patologiaList = operazione.getPatologia();
+        LinearLayout patologiaLinearLayout = (LinearLayout) findViewById(R.id.patologia);
+
+        for (Patologia patologia : patologiaList) {
+            TextView textView = (TextView) View.inflate(this, R.layout.simple_text, null);
+            textView.setText(patologia.toString());
+            patologiaLinearLayout.addView(textView);
+        }
 
         chronometer = (Chronometer) findViewById(R.id.cronometro);
         chronometer.start();

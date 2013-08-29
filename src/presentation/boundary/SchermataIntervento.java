@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.*;
 import business.entity.Intervento;
 import business.entity.Operazione;
+import business.entity.Patologia;
 import com.adisys.R;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
@@ -127,9 +128,18 @@ public class SchermataIntervento extends Activity implements Boundary {
         LinearLayout rubricaLinearLayout = (LinearLayout) findViewById(R.id.rubricaList);
 
         for (String numero : rubrica) {
-            TextView textView = (TextView) View.inflate(this, R.layout.rubrica_text, null);
+            TextView textView = (TextView) View.inflate(this, R.layout.very_little_text, null);
             textView.setText(LIST_POINT + numero);
             rubricaLinearLayout.addView(textView);
+        }
+
+        List<Patologia> patologiaList = intervento.getPaziente().getPatologia();
+        LinearLayout patologiaLinearLayout = (LinearLayout) findViewById(R.id.patologia);
+
+        for (Patologia patologia : patologiaList) {
+            TextView textView = (TextView) View.inflate(this, R.layout.very_little_text, null);
+            textView.setText(LIST_POINT + patologia.toString());
+            patologiaLinearLayout.addView(textView);
         }
     }
 

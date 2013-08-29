@@ -9,61 +9,82 @@
     <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent" android:visibility="visible">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/insert_values"
-                    android:id="@+id/textView" android:layout_gravity="left|center_vertical" android:textSize="28dp"
-                    android:layout_marginLeft="4dp"/>
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/scrollView" android:fillViewport="true">
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" android:layout_marginLeft="10dp" android:paddingBottom="20dp">
+                    android:layout_height="match_parent" android:visibility="visible">
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/id"
-                        android:id="@+id/textView1" android:textSize="18dp"/>
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/idOperazioneValue" android:textSize="16dp" android:layout_marginLeft="9dp"/>
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/operation_name"
-                        android:id="@+id/textView2" android:textSize="18dp"/>
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/nomeOperazioneValue" android:textSize="16dp" android:layout_marginLeft="9dp"/>
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/derived_value"
-                        android:id="@+id/textView3" android:textSize="18dp"/>
-                <EditText
+                        android:text="@string/insert_values"
+                        android:id="@+id/textView" android:layout_gravity="left|center_vertical" android:textSize="28dp"
+                        android:layout_marginLeft="4dp"/>
+                <LinearLayout
+                        android:orientation="vertical"
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/valoreRilevatoValue" android:textIsSelectable="false" android:textSize="16dp"
-                        android:singleLine="true" android:editable="true" android:layout_marginLeft="5dp"
-                        android:gravity="center_vertical"/>
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/note"
-                        android:id="@+id/textView4" android:textSize="18dp"/>
-                <EditText
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:id="@+id/notaValue" android:textSize="16dp" android:editable="true"
-                        android:layout_marginLeft="5dp" android:gravity="left|top"/>
+                        android:layout_height="fill_parent" android:layout_marginLeft="10dp"
+                        android:paddingBottom="20dp">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/id"
+                            android:id="@+id/textView1" android:textSize="18dp"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/idOperazioneValue" android:textSize="16dp"
+                            android:layout_marginLeft="9dp"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/operation_name"
+                            android:id="@+id/textView2" android:textSize="18dp"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/nomeOperazioneValue" android:textSize="16dp"
+                            android:layout_marginLeft="9dp"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/derived_value"
+                            android:id="@+id/textView3" android:textSize="18dp"/>
+                    <EditText
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/valoreRilevatoValue" android:textIsSelectable="false"
+                            android:textSize="16dp"
+                            android:singleLine="true" android:editable="true" android:layout_marginLeft="5dp"
+                            android:gravity="center_vertical"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/note"
+                            android:id="@+id/textView4" android:textSize="18dp"/>
+                    <EditText
+                            android:layout_width="fill_parent"
+                            android:layout_height="130dp"
+                            android:id="@+id/notaValue" android:textSize="16dp" android:editable="true"
+                            android:layout_marginLeft="5dp" android:gravity="left|top"/>
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
+                              android:layout_height="wrap_content" android:gravity="top"
+                              android:id="@+id/linearLayout">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="@string/disease_to_cure" android:id="@+id/textView6"
+                              android:paddingTop="3dp" android:textSize="18dp"/>
+                    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content" android:layout_marginLeft="3dp">
+                        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
+                                      android:layout_height="wrap_content" android:id="@+id/patologia"/>
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
+        </ScrollView>
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"

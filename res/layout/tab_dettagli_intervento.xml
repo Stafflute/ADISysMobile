@@ -194,6 +194,18 @@
                                               android:id="@+id/rubricaList"/>
                             </LinearLayout>
                         </LinearLayout>
+                        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
+                                      android:layout_height="wrap_content" android:gravity="top"
+                                      android:id="@+id/linearLayout14">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                      android:text="@string/suffering_diseases" android:id="@+id/textView1"
+                                      android:paddingTop="3dp"/>
+                            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
+                                          android:layout_height="wrap_content" android:layout_marginLeft="3dp">
+                                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
+                                              android:layout_height="wrap_content" android:id="@+id/patologia"/>
+                            </LinearLayout>
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"

@@ -135,6 +135,9 @@ public class PianificazioneParser {
         List<XMLNode> numeroNodeList = rubricaNode.queryNodes("numero");
         paziente.setNumeroCellulare(getListLeafNode(numeroNodeList));
 
+        List<Patologia> patologia = getListPatologia(node);
+        paziente.setPatologia(patologia);
+
         return paziente;
     }
 
@@ -167,7 +170,33 @@ public class PianificazioneParser {
             String nota = getLeafNodeValue(node, "nota");
             operazione.setNota(nota);
 
+            List<Patologia> patologia = getListPatologia(node);
+            operazione.setPatologia(patologia);
+
             list.add(operazione);
+        }
+
+        return list;
+    }
+
+    private static List<Patologia> getListPatologia(XMLNode originNode) {
+        List<Patologia> list = new LinkedList<>();
+        XMLNode listaPatologiaNode = originNode.queryNode("listaPatologie");
+        List<XMLNode> nodeList = listaPatologiaNode.queryNodes("patologia");
+
+        for (XMLNode node : nodeList) {
+            Patologia patologia = new Patologia();
+
+            String codice = getLeafNodeValue(node, "codice");
+            patologia.setCodice(codice);
+
+            String nome = getLeafNodeValue(node, "nome");
+            patologia.setNome(nome);
+
+            int gravita = Integer.parseInt(getLeafNodeValue(node, "gravita"));
+            patologia.setGravita(gravita);
+
+            list.add(patologia);
         }
 
         return list;
