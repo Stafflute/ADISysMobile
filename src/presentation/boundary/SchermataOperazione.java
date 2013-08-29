@@ -51,7 +51,7 @@ public class SchermataOperazione extends Activity {
         LinearLayout patologiaLinearLayout = (LinearLayout) findViewById(R.id.patologia);
 
         for (Patologia patologia : patologiaList) {
-            TextView textView = (TextView) View.inflate(this, R.layout.simple_text, null);
+            TextView textView = (TextView) View.inflate(this, R.layout.very_little_text, null);
             textView.setText(patologia.toString());
             patologiaLinearLayout.addView(textView);
         }
