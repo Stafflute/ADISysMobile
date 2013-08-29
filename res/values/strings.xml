@@ -35,4 +35,5 @@
     <string name="intervention_finished_successfully">Intervento completato con successo!</string>
     <string name="suffering_diseases">Patologie sofferte</string>
     <string name="disease_to_cure">Patologie da curare</string>
+    <string name="disease_header">(codice, nome, gravità)</string>
 </resources>

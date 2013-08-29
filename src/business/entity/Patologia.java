@@ -44,8 +44,9 @@ public class Patologia implements Entity {
     }
 
     private static final String SEPARATOR = " ";
+    private static final String COMMA = ", ";
 
     public String toString() {
-        return codice + SEPARATOR + nome;
+        return codice + SEPARATOR + nome + COMMA + gravita;
     }
 }

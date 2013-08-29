@@ -145,6 +145,8 @@ public class JournalingBuilder {
                 appendSimpleElement(operazioneNode, "valoreRilevato", "", valoreRilevatoAttributes);
             }
 
+            fillListaPatologie(operazioneNode, operazione.getPatologia());
+
             operazioneListNode.add(operazioneNode);
         }
 
@@ -171,6 +173,8 @@ public class JournalingBuilder {
                 appendSimpleElement(rubricaNode, "numero", numero);
             }
         }
+
+        fillListaPatologie(pazienteNode, paziente.getPatologia());
     }
 
     private static void fillInfermiere(XMLNode interventoNode, InterventoCompleto interventoCompleto) {
@@ -219,5 +223,23 @@ public class JournalingBuilder {
         }
 
         listaAccelerometroNode.children = accelerometroListNode;
+    }
+
+    private static void fillListaPatologie(XMLNode parent, List<Patologia> patologiaList) {
+        XMLInternalNode listaPatologieNode = new XMLInternalNode(parent, "listaPatologie", null);
+        appendElement(parent, listaPatologieNode);
+
+        List<XMLNode> patologiaListNode = new LinkedList<>();
+        for (Patologia patologia : patologiaList) {
+            XMLInternalNode patologiaNode = new XMLInternalNode(listaPatologieNode, "patologia", null);
+
+            appendSimpleElement(patologiaNode, "codice", patologia.getCodice());
+            appendSimpleElement(patologiaNode, "nome", patologia.getNome());
+            appendSimpleElement(patologiaNode, "gravita", String.valueOf(patologia.getGravita()));
+
+            patologiaListNode.add(patologiaNode);
+        }
+
+        listaPatologieNode.children = patologiaListNode;
     }
 }

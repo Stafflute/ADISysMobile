@@ -76,6 +76,9 @@
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                                   android:text="@string/disease_to_cure" android:id="@+id/textView6"
                                   android:paddingTop="3dp" android:textSize="18dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                  android:text="@string/disease_header" android:id="@+id/textView7"
+                                  android:paddingBottom="3dp"/>
                         <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
                                       android:layout_height="wrap_content" android:layout_marginLeft="3dp">
                             <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
