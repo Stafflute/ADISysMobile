@@ -2,13 +2,13 @@ package business.applicationservice.factory;
 
 import business.applicationservice.exception.UnavaliableApplicationServiceException;
 import business.applicationservice.exception.UnselectedServiceNameException;
-import util.Entry;
+import utility.Entry;
 
 import java.util.HashMap;
 import java.util.Map;
 
 class ApplicationServiceHashMap implements ApplicationServiceMap {
-    private Map<String, Entry<String, String>> asMapDictionary = new HashMap<>();
+    private Map<String, Entry<String, String>> asMapDictionary = new HashMap<String, Entry<String, String>>();
     private String currentServiceName = null;
 
     @Override
@@ -19,7 +19,7 @@ class ApplicationServiceHashMap implements ApplicationServiceMap {
     @Override
     public void setApplicationServiceValues(String applicationService, String serviceFunction) {
         if (isServiceNameSelected()) {
-            Entry<String, String> newValues = new Entry<>(applicationService, serviceFunction);
+            Entry<String, String> newValues = new Entry<String, String>(applicationService, serviceFunction);
             asMapDictionary.put(currentServiceName, newValues);
 
         } else {

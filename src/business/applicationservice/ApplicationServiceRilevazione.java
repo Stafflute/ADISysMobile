@@ -12,7 +12,7 @@ import integration.listener.gps.GPSListener;
 import integration.xml.builder.JournalingBuilder;
 import org.joda.time.LocalTime;
 import presentation.controller.ApplicationService;
-import util.Parameter;
+import utility.Parameter;
 
 import java.io.File;
 import java.util.LinkedList;
@@ -23,13 +23,13 @@ public class ApplicationServiceRilevazione implements ApplicationService {
     private static ComponentName accelerometerComponent;
     private static InterventoCompleto interventoCompleto;
     private static List<Operazione> operazioneList;
-    private static List<GPS> gpsList = new LinkedList<>();
-    private static List<Accelerometro> accelerometroList = new LinkedList<>();
+    private static List<GPS> gpsList = new LinkedList<GPS>();
+    private static List<Accelerometro> accelerometroList = new LinkedList<Accelerometro>();
     private static File journalingFile;
 
     public synchronized void startReceiving(Parameter parameter) throws NotStartedServiceException {
-        gpsList = new LinkedList<>();
-        accelerometroList = new LinkedList<>();
+        gpsList = new LinkedList<GPS>();
+        accelerometroList = new LinkedList<Accelerometro>();
 
         Intervento intervento = (Intervento) parameter.getValue("intervento");
         interventoCompleto = new InterventoCompleto(intervento);
@@ -81,7 +81,7 @@ public class ApplicationServiceRilevazione implements ApplicationService {
     }
 
     public synchronized void registerValues(Parameter parameter) {
-        int position = (int) parameter.getValue("posizione");
+        int position = (Integer) parameter.getValue("posizione");
         Operazione operazione = operazioneList.get(position);
 
         String nota = (String) parameter.getValue("nota");
@@ -89,7 +89,7 @@ public class ApplicationServiceRilevazione implements ApplicationService {
 
         ValoreRilevato valoreRilevato = new ValoreRilevato();
         String misura = (String) parameter.getValue("misura");
-        LocalTime tempoOperazione = new LocalTime((long) parameter.getValue("tempoOperazione"));
+        LocalTime tempoOperazione = new LocalTime((Long) parameter.getValue("tempoOperazione"));
 
         valoreRilevato.setMisura(misura);
         valoreRilevato.setTempoOperazione(tempoOperazione);

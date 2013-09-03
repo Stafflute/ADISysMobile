@@ -14,14 +14,14 @@ import business.applicationservice.transfer.PianificazioneFile;
 import com.adisys.R;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
-import util.Parameter;
+import utility.Parameter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SchermataPrincipale extends Activity implements Boundary {
 
-    private List<PianificazioneFile> fileList = new ArrayList<>();
+    private List<PianificazioneFile> fileList = new ArrayList<PianificazioneFile>();
 
     private PianificazioneFile selectedPianificazione = null;
 
@@ -73,7 +73,7 @@ public class SchermataPrincipale extends Activity implements Boundary {
 
         fileList = (List<PianificazioneFile>) fc.processRequest("ElencaPianificazioni", null);
 
-        ArrayAdapter<PianificazioneFile> adapter = new ArrayAdapter<>(this, R.layout.little_text, fileList);
+        ArrayAdapter<PianificazioneFile> adapter = new ArrayAdapter<PianificazioneFile>(this, R.layout.little_text, fileList);
         adapter.setDropDownViewResource(R.layout.little_text);
         fileSpinner.setAdapter(adapter);
 

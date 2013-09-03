@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import presentation.boundary.Boundary;
 import presentation.controller.ApplicationService;
-import util.ErrorPrinter;
-import util.Parameter;
+import utility.ErrorPrinter;
+import utility.Parameter;
 
 public class ApplicationServiceBoundary implements ApplicationService {
     private static final String BOUNDARY_PACKAGE_PATH = "presentation.boundary.";

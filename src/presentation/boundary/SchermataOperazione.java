@@ -13,7 +13,7 @@ import business.entity.Patologia;
 import com.adisys.R;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
-import util.Parameter;
+import utility.Parameter;
 
 import java.util.List;
 
@@ -42,7 +42,7 @@ public class SchermataOperazione extends Activity {
         extras = getIntent().getExtras();
         parameter = (Parameter) extras.get(Parameter.PARAMETER);
 
-        position = (int) parameter.getValue("posizioneOperazione");
+        position = (Integer) parameter.getValue("posizioneOperazione");
         operazione = (Operazione) parameter.getValue("operazione");
 
         initText();

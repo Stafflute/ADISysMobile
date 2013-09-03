@@ -3,7 +3,7 @@ package business.applicationservice;
 import android.app.Activity;
 import android.content.Context;
 import presentation.controller.ApplicationService;
-import util.Parameter;
+import utility.Parameter;
 
 /**
  * Created with IntelliJ IDEA.

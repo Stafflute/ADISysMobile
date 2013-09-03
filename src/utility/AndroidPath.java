@@ -1,4 +1,4 @@
-package util;
+package utility;
 
 /**
  * Created with IntelliJ IDEA.

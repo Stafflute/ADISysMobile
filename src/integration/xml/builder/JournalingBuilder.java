@@ -3,11 +3,8 @@ package integration.xml.builder;
 import business.entity.*;
 import org.joda.time.LocalTime;
 import org.xml.sax.SAXException;
-import pl.polidea.TreeXMLParser.XMLInternalNode;
-import pl.polidea.TreeXMLParser.XMLLeafNode;
-import pl.polidea.TreeXMLParser.XMLNode;
-import pl.polidea.TreeXMLParser.XMLParser;
-import util.ErrorPrinter;
+import utility.treexmlparser.*;
+import utility.ErrorPrinter;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
@@ -24,7 +21,7 @@ public class JournalingBuilder {
         XMLNode root = new XMLNode();
         XMLInternalNode journalingNode = new XMLInternalNode(root, JOURNALING_ELEMENT, null);
 
-        List<XMLNode> nodeList = new LinkedList<>();
+        List<XMLNode> nodeList = new LinkedList<XMLNode>();
         nodeList.add(journalingNode);
 
         root.children = nodeList;
@@ -67,7 +64,7 @@ public class JournalingBuilder {
 
     private static XMLInternalNode createSimpleElement(XMLNode parent, String tag, String value) {
         XMLInternalNode result = new XMLInternalNode(parent, tag, null);
-        List<XMLNode> leafList = new LinkedList<>();
+        List<XMLNode> leafList = new LinkedList<XMLNode>();
         XMLLeafNode valueNode = new XMLLeafNode(result, value);
         leafList.add(valueNode);
         result.children = leafList;
@@ -77,7 +74,7 @@ public class JournalingBuilder {
     private static void appendElement(XMLNode parent, XMLInternalNode child) {
         List<XMLNode> children = parent.children;
         if (children == null) {
-            children = new LinkedList<>();
+            children = new LinkedList<XMLNode>();
         }
 
         children.add(child);
@@ -91,7 +88,7 @@ public class JournalingBuilder {
 
     private static XMLInternalNode createSimpleElement(XMLNode parent, String tag, String value, Map<String, String> map) {
         XMLInternalNode result = new XMLInternalNode(parent, tag, map);
-        List<XMLNode> leafList = new LinkedList<>();
+        List<XMLNode> leafList = new LinkedList<XMLNode>();
         XMLLeafNode valueNode = new XMLLeafNode(result, value);
         leafList.add(valueNode);
         result.children = leafList;
@@ -127,7 +124,7 @@ public class JournalingBuilder {
         XMLInternalNode listaOperazioniNode = new XMLInternalNode(interventoNode, "listaOperazioni", null);
         appendElement(interventoNode, listaOperazioniNode);
 
-        List<XMLNode> operazioneListNode = new LinkedList<>();
+        List<XMLNode> operazioneListNode = new LinkedList<XMLNode>();
         for (Operazione operazione : interventoCompleto.getOperazione()) {
             XMLInternalNode operazioneNode = new XMLInternalNode(listaOperazioniNode, "operazione", null);
 
@@ -136,7 +133,7 @@ public class JournalingBuilder {
             appendSimpleElement(operazioneNode, "nota", operazione.getNota());
 
             ValoreRilevato valoreRilevato = operazione.getValoreRilevato();
-            Map<String, String> valoreRilevatoAttributes = new HashMap<>();
+            Map<String, String> valoreRilevatoAttributes = new HashMap<String, String>();
             if (valoreRilevato != null) {
                 valoreRilevatoAttributes.put("tempoOperazione", valoreRilevato.getTempoOperazione().toString());
                 appendSimpleElement(operazioneNode, "valoreRilevato", valoreRilevato.getMisura(), valoreRilevatoAttributes);
@@ -168,7 +165,7 @@ public class JournalingBuilder {
         appendElement(pazienteNode, rubricaNode);
 
         if (paziente.getNumeroCellulare() != null) {
-            List<XMLNode> numeroNodeList = new LinkedList<>();
+            List<XMLNode> numeroNodeList = new LinkedList<XMLNode>();
             for (String numero : paziente.getNumeroCellulare()) {
                 appendSimpleElement(rubricaNode, "numero", numero);
             }
@@ -192,7 +189,7 @@ public class JournalingBuilder {
         XMLInternalNode listaGPSNode = new XMLInternalNode(interventoNode, "listaGPS", null);
         appendElement(interventoNode, listaGPSNode);
 
-        List<XMLNode> gpsListNode = new LinkedList<>();
+        List<XMLNode> gpsListNode = new LinkedList<XMLNode>();
         for (GPS gps : interventoCompleto.getGps()) {
             XMLInternalNode gpsNode = new XMLInternalNode(listaGPSNode, "gps", null);
 
@@ -209,7 +206,7 @@ public class JournalingBuilder {
         XMLInternalNode listaAccelerometroNode = new XMLInternalNode(interventoNode, "listaAccelerometro", null);
         appendElement(interventoNode, listaAccelerometroNode);
 
-        List<XMLNode> accelerometroListNode = new LinkedList<>();
+        List<XMLNode> accelerometroListNode = new LinkedList<XMLNode>();
         for (Accelerometro accelerometro : interventoCompleto.getAccelerometro()) {
             XMLInternalNode accelerometroNode = new XMLInternalNode(listaAccelerometroNode, "accelerometro", null);
 
@@ -229,7 +226,7 @@ public class JournalingBuilder {
         XMLInternalNode listaPatologieNode = new XMLInternalNode(parent, "listaPatologie", null);
         appendElement(parent, listaPatologieNode);
 
-        List<XMLNode> patologiaListNode = new LinkedList<>();
+        List<XMLNode> patologiaListNode = new LinkedList<XMLNode>();
         for (Patologia patologia : patologiaList) {
             XMLInternalNode patologiaNode = new XMLInternalNode(listaPatologieNode, "patologia", null);
 

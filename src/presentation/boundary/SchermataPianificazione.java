@@ -14,7 +14,7 @@ import business.entity.Pianificazione;
 import com.adisys.R;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
-import util.Parameter;
+import utility.Parameter;
 
 import java.util.HashSet;
 import java.util.List;
@@ -77,7 +77,7 @@ public class SchermataPianificazione extends Activity implements Boundary {
         toValidate = false;
     }
 
-    Set<String> idSet = new HashSet<>();
+    Set<String> idSet = new HashSet<String>();
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

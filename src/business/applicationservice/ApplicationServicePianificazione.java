@@ -17,10 +17,10 @@ import business.entity.Pianificazione;
 import integration.xml.parser.PianificazioneParser;
 import integration.xml.validator.Validator;
 import presentation.controller.ApplicationService;
-import util.AndroidPath;
-import util.ErrorPrinter;
-import util.FolderManager;
-import util.Parameter;
+import utility.AndroidPath;
+import utility.ErrorPrinter;
+import utility.FolderManager;
+import utility.Parameter;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -59,7 +59,7 @@ public class ApplicationServicePianificazione implements ApplicationService {
 
             File folder = new File(AndroidPath.SD_PATH + CANONICAL_IMPORTAZIONE_PATH);
 
-            fileListDetailed = new ArrayList<>();
+            fileListDetailed = new ArrayList<PianificazioneFile>();
             File[] fileList = folder.listFiles(filter);
 
             for (File file : fileList) {

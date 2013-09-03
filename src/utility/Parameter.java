@@ -1,4 +1,4 @@
-package util;
+package utility;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class Parameter implements Serializable {
     private static final long serialVersionUID = 5447770582952687574L;
-    private Map<String, Object> dictionary = new HashMap<>();
+    private Map<String, Object> dictionary = new HashMap<String, Object>();
     public static final transient String PARAMETER = "parameter";
 
 

@@ -1,10 +1,8 @@
 package integration.xml.parser;
 
 import org.xml.sax.SAXException;
-import pl.polidea.TreeXMLParser.XMLLeafNode;
-import pl.polidea.TreeXMLParser.XMLNode;
-import pl.polidea.TreeXMLParser.XMLParser;
-import util.ErrorPrinter;
+import utility.treexmlparser.*;
+import utility.ErrorPrinter;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
@@ -35,7 +33,7 @@ public class JournalingSimpleParser {
     }
 
     private static Set<String> deserialize(XMLNode root) {
-        Set<String> idSet = new HashSet<>();
+        Set<String> idSet = new HashSet<String>();
 
         List<XMLNode> nodeList = root.children.get(FIRST).queryNodes("intervento");
         for (XMLNode node : nodeList) {

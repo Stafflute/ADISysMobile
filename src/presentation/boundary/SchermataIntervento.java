@@ -13,8 +13,8 @@ import business.entity.Patologia;
 import com.adisys.R;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
-import util.DateConverter;
-import util.Parameter;
+import utility.DateConverter;
+import utility.Parameter;
 
 import java.util.List;
 
@@ -121,7 +121,7 @@ public class SchermataIntervento extends Activity implements Boundary {
         operazioneListView = (ListView) findViewById(R.id.listaOperazioni);
         operazioneListView.setOnItemClickListener(operazioneClickListener);
 
-        operazioneArrayAdapter = new SelectionArrayAdapter<>(this, R.layout.simple_text, operazioneList);
+        operazioneArrayAdapter = new SelectionArrayAdapter<Operazione>(this, R.layout.simple_text, operazioneList);
         operazioneListView.setAdapter(operazioneArrayAdapter);
 
         List<String> rubrica = intervento.getPaziente().getNumeroCellulare();

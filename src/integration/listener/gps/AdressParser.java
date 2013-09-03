@@ -7,7 +7,7 @@ import android.util.Log;
 import business.applicationservice.ApplicationServiceGeneral;
 import business.entity.GPS;
 import business.entity.Intervento;
-import util.ErrorPrinter;
+import utility.ErrorPrinter;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,6 +1,6 @@
 package business.entity;
 
-import util.SerialClone;
+import utility.SerialClone;
 import java.util.List;
 
 public class Pianificazione implements Entity {

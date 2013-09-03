@@ -8,9 +8,9 @@ import integration.xml.validator.Validator;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import presentation.controller.ApplicationService;
-import util.AndroidPath;
-import util.FolderManager;
-import util.Parameter;
+import utility.AndroidPath;
+import utility.FolderManager;
+import utility.Parameter;
 
 import java.io.File;
 import java.util.HashSet;
@@ -30,11 +30,11 @@ public class ApplicationServiceJournaling implements ApplicationService {
     public Set<String> readJournalingFile(Parameter parameter) {
         PianificazioneFile pianificazioneFile = (PianificazioneFile) parameter.getValue("pianificazione");
 
-        boolean toValidate = (boolean) parameter.getValue("validazione");
+        boolean toValidate = (Boolean) parameter.getValue("validazione");
 
         FolderManager.insertFolderIfNotExists(JOURNALING_PATH);
 
-        Set<String> idSet = new HashSet<>();
+        Set<String> idSet = new HashSet<String>();
 
         String dateString = pianificazioneFile.getDate().toString();
 

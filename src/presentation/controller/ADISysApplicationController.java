@@ -4,9 +4,8 @@ import business.applicationservice.exception.CommonException;
 import business.applicationservice.factory.ApplicationServiceFactory;
 import business.applicationservice.factory.ApplicationServiceMethod;
 import business.applicationservice.factory.ApplicationServiceMethodFactory;
-import presentation.boundary.Boundary;
 import business.applicationservice.ApplicationServiceBoundary;
-import util.Parameter;
+import utility.Parameter;
 
 class ADISysApplicationController implements ApplicationController {
 	

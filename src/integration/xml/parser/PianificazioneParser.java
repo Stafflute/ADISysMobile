@@ -4,10 +4,8 @@ import business.entity.*;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import org.xml.sax.SAXException;
-import pl.polidea.TreeXMLParser.XMLLeafNode;
-import pl.polidea.TreeXMLParser.XMLNode;
-import pl.polidea.TreeXMLParser.XMLParser;
-import util.ErrorPrinter;
+import utility.treexmlparser.*;
+import utility.ErrorPrinter;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
@@ -46,7 +44,7 @@ public class PianificazioneParser {
     private static Pianificazione deserialize(XMLNode root) {
         Pianificazione pianificazione = new Pianificazione();
 
-        List<Intervento> listaInterventi = new ArrayList<>();
+        List<Intervento> listaInterventi = new ArrayList<Intervento>();
 
         List<XMLNode> nodeList = root.children.get(FIRST).queryNodes("intervento");
         for (XMLNode node : nodeList) {
@@ -154,7 +152,7 @@ public class PianificazioneParser {
     }
 
     private static List<Operazione> getListOperazioni(XMLNode interventoNode) {
-        List<Operazione> list = new LinkedList<>();
+        List<Operazione> list = new LinkedList<Operazione>();
         XMLNode listaOperazioniNode = interventoNode.queryNode("listaOperazioni");
         List<XMLNode> nodeList = listaOperazioniNode.queryNodes("operazione");
 
@@ -180,7 +178,7 @@ public class PianificazioneParser {
     }
 
     private static List<Patologia> getListPatologia(XMLNode originNode) {
-        List<Patologia> list = new LinkedList<>();
+        List<Patologia> list = new LinkedList<Patologia>();
         XMLNode listaPatologiaNode = originNode.queryNode("listaPatologie");
         List<XMLNode> nodeList = listaPatologiaNode.queryNodes("patologia");
 

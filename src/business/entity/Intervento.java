@@ -2,7 +2,7 @@ package business.entity;
 
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
-import util.SerialClone;
+import utility.SerialClone;
 import java.util.List;
 
 public class Intervento implements Entity {
