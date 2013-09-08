@@ -1,7 +1,7 @@
 package business.applicationservice.transfer;
 
 import org.joda.time.LocalDate;
-import utility.AndroidPath;
+import business.applicationservice.AndroidPath;
 import utility.DateConverter;
 
 import java.io.File;

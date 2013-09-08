@@ -17,7 +17,6 @@ import business.entity.Pianificazione;
 import integration.xml.parser.PianificazioneParser;
 import integration.xml.validator.Validator;
 import presentation.controller.ApplicationService;
-import utility.AndroidPath;
 import utility.ErrorPrinter;
 import utility.FolderManager;
 import utility.Parameter;

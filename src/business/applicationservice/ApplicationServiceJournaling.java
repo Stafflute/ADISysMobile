@@ -8,7 +8,6 @@ import integration.xml.validator.Validator;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import presentation.controller.ApplicationService;
-import utility.AndroidPath;
 import utility.FolderManager;
 import utility.Parameter;
 
