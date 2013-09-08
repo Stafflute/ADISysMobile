@@ -1,4 +1,6 @@
-package utility;
+package business.applicationservice.transfer;
+
+import business.applicationservice.exception.UnavaliableKeyException;
 
 import java.io.Serializable;
 import java.util.HashMap;

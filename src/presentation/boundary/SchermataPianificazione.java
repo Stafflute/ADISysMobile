@@ -14,7 +14,7 @@ import business.entity.Pianificazione;
 import com.adisys.R;
 import presentation.controller.FrontController;
 import presentation.controller.FrontControllerFactory;
-import utility.Parameter;
+import business.applicationservice.transfer.Parameter;
 
 import java.util.HashSet;
 import java.util.List;

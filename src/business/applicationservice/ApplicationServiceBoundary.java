@@ -5,7 +5,7 @@ import android.content.Intent;
 import presentation.boundary.Boundary;
 import presentation.controller.ApplicationService;
 import utility.ErrorPrinter;
-import utility.Parameter;
+import business.applicationservice.transfer.Parameter;
 
 public class ApplicationServiceBoundary implements ApplicationService {
     private static final String BOUNDARY_PACKAGE_PATH = "presentation.boundary.";

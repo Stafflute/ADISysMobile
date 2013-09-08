@@ -12,7 +12,7 @@ import integration.listener.gps.GPSListener;
 import integration.xml.builder.JournalingBuilder;
 import org.joda.time.LocalTime;
 import presentation.controller.ApplicationService;
-import utility.Parameter;
+import business.applicationservice.transfer.Parameter;
 
 import java.io.File;
 import java.util.LinkedList;

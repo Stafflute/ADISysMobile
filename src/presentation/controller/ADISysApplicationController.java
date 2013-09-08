@@ -5,7 +5,7 @@ import business.applicationservice.factory.ApplicationServiceFactory;
 import business.applicationservice.factory.ApplicationServiceMethod;
 import business.applicationservice.factory.ApplicationServiceMethodFactory;
 import business.applicationservice.ApplicationServiceBoundary;
-import utility.Parameter;
+import business.applicationservice.transfer.Parameter;
 
 class ADISysApplicationController implements ApplicationController {
 	

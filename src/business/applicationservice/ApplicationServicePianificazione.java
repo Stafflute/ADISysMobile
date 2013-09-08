@@ -19,7 +19,7 @@ import integration.xml.validator.Validator;
 import presentation.controller.ApplicationService;
 import utility.ErrorPrinter;
 import utility.FolderManager;
-import utility.Parameter;
+import business.applicationservice.transfer.Parameter;
 
 import java.io.File;
 import java.io.FileFilter;

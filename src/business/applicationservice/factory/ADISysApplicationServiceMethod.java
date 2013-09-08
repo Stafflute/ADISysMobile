@@ -3,7 +3,7 @@ package business.applicationservice.factory;
 import business.applicationservice.exception.CommonException;
 import presentation.controller.ApplicationService;
 import utility.ErrorPrinter;
-import utility.Parameter;
+import business.applicationservice.transfer.Parameter;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

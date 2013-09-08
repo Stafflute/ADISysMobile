@@ -1,6 +1,6 @@
 package presentation.controller;
 
-import utility.Parameter;
+import business.applicationservice.transfer.Parameter;
 
 public interface FrontController {
 
