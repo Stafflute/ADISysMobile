@@ -50,7 +50,7 @@ public class Parameter implements Serializable {
         return result;
     }
 
-    public boolean contains(String key) {
+    public boolean containsKey(String key) {
         return dictionary.containsKey(key);
     }
 }
