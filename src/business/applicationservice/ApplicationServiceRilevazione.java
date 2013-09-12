@@ -7,7 +7,7 @@ import android.util.Log;
 import business.applicationservice.exception.NotStartedServiceException;
 import business.entity.*;
 import integration.listener.accelerometer.AccelerometerListener;
-import integration.listener.gps.AdressParser;
+import integration.listener.gps.AddressParser;
 import integration.listener.gps.GPSListener;
 import integration.xml.builder.JournalingBuilder;
 import org.joda.time.LocalTime;
@@ -35,7 +35,7 @@ public class ApplicationServiceRilevazione implements ApplicationService {
         interventoCompleto = new InterventoCompleto(intervento);
         operazioneList = interventoCompleto.getOperazione();
 
-        GPS adressGPS = AdressParser.getCoordinates(intervento);
+        GPS adressGPS = AddressParser.getCoordinates(intervento);
         gpsList.add(adressGPS);
 
         //Check if the signal listening is active

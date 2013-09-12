@@ -12,7 +12,7 @@ import utility.ErrorPrinter;
 import java.io.IOException;
 import java.util.List;
 
-public class AdressParser {
+public class AddressParser {
     private static final int FIRST = 0;
     private static final int DEFAULT_MAX_RESULT = 5;
 
