@@ -31,7 +31,7 @@ public class AddressParser {
             try {
                 address = coder.getFromLocationName(strAddress, DEFAULT_MAX_RESULT);
 
-                if (address != null) {
+                if ((address != null) || (address.size() > 0)) {
 
                     Address location = address.get(FIRST);
                     double latitude = location.getLatitude();
