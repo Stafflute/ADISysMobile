@@ -1,5 +1,6 @@
 package integration.xml.builder;
 
+import android.util.Log;
 import business.entity.*;
 import org.joda.time.LocalTime;
 import org.xml.sax.SAXException;
