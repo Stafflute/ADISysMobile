@@ -36,7 +36,9 @@ public class ApplicationServiceRilevazione implements ApplicationService {
         operazioneList = interventoCompleto.getOperazione();
 
         GPS adressGPS = AddressParser.getCoordinates(intervento);
-        gpsList.add(adressGPS);
+        if (adressGPS != null) {
+            gpsList.add(adressGPS);
+        }
 
         //Check if the signal listening is active
         if ((gpsComponent != null) || (accelerometerComponent != null)) {
